@@ -1,138 +1,132 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wireframe - Sistema de Eventos Universitarios</title>
+    <title>Inicio - Sistema de Eventos Universitarios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-    <!-- Vinculamos el CSS externo -->
-    <link rel="stylesheet" href="estilos.css">
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: #1FB9DE;
+            transition: all 0.3s ease;
+        }
+
+            .btn-primary:hover {
+                background-color: #1899b8;
+            }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+
+        .nav-link {
+            transition: all 0.2s;
+        }
+
+            .nav-link:hover {
+                background-color: #f3f4f6;
+            }
+
+            .nav-link.active {
+                background-color: #1FB9DE;
+                color: white;
+            }
+    </style>
 </head>
+<body class="bg-gray-50">
 
-<body>
+    <!-- Sidebar -->
+    <div class="fixed left-0 top-0 bottom-0 w-72 bg-white border-r shadow-xl z-50">
+        <div class="p-6 border-b">
+            <img src="img/logo-ug.png" alt="Universidad de Guayaquil" class="h-14 mx-auto">
+        </div>
 
-    <header>
-        <h1>Sistema de Eventos Universitarios</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Eventos</a></li>
-                <li><a href="#">Inscripciones</a></li>
-                <li><a href="#">Asistencia</a></li>
-                <li><a href="#">Usuarios</a></li>
-                <li><a href="#">Noticias</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="hero">
-        BANNER PRINCIPAL / EVENTO DESTACADO
-    </section>
-
-    <main class="contenedor">
-
-        <section>
-            <div class="seccion-titulo">
-                <h2>Eventos Disponibles</h2>
+        <div class="p-6">
+            <div class="flex items-center gap-3 mb-10">
+                <div class="w-12 h-12 bg-[#1FB9DE] rounded-2xl flex items-center justify-center text-white text-2xl font-medium">RA</div>
+                <div>
+                    <p class="font-semibold">Ronald Andagoya</p>
+                    <p class="text-xs text-gray-500">Estudiante • Ingeniería</p>
+                </div>
             </div>
 
-            <div class="cards">
+            <nav class="space-y-1">
+                <a href="#" class="nav-link active flex items-center gap-3 px-4 py-3 rounded-2xl">
+                    <i class="fa-solid fa-house w-5"></i>
+                    <span class="font-medium">Inicio</span>
+                </a>
+                <a href="#" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl">
+                    <i class="fa-solid fa-calendar w-5"></i>
+                    <span class="font-medium">Eventos</span>
+                </a>
+                <a href="#" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl">
+                    <i class="fa-solid fa-users w-5"></i>
+                    <span class="font-medium">Mis Inscripciones</span>
+                </a>
+                <a href="#" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl">
+                    <i class="fa-solid fa-chart-bar w-5"></i>
+                    <span class="font-medium">Asistencia</span>
+                </a>
+            </nav>
+        </div>
+    </div>
 
-                <article class="card">
-                    <div class="placeholder"></div>
-                    <h3>Evento Académico</h3>
-                    <p>Descripción breve del evento universitario.</p>
-                    <br>
-                    <a href="#" class="boton">Ver más</a>
-                </article>
-
-                <article class="card">
-                    <div class="placeholder"></div>
-                    <h3>Evento Deportivo</h3>
-                    <p>Información general sobre el evento.</p>
-                    <br>
-                    <a href="#" class="boton">Ver más</a>
-                </article>
-
-                <article class="card">
-                    <div class="placeholder"></div>
-                    <h3>Evento Cultural</h3>
-                    <p>Detalles básicos del evento cultural.</p>
-                    <br>
-                    <a href="#" class="boton">Ver más</a>
-                </article>
-
-            </div>
-        </section>
-
-        <section class="dashboard">
-            <div class="seccion-titulo">
-                <h2>Panel Administrativo</h2>
+    <!-- Contenido Principal -->
+    <div class="ml-72">
+        <header class="bg-white border-b px-8 py-5 flex items-center justify-between">
+            <div class="relative w-96">
+                <input type="text" placeholder="Buscar eventos..."
+                       class="w-full bg-gray-100 border border-transparent focus:border-[#1FB9DE] rounded-3xl py-3 pl-12 focus:outline-none">
+                <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-gray-400"></i>
             </div>
 
-            <div class="paneles">
-
-                <aside class="panel">
-                    <h3>Menú Administrativo</h3>
-                    <br>
-                    <ul>
-                        <li>Gestionar usuarios</li>
-                        <li>Gestionar eventos</li>
-                        <li>Gestionar asistencia</li>
-                        <li>Gestionar inscripciones</li>
-                        <li>Gestionar noticias</li>
-                    </ul>
-                </aside>
-
-                <section class="panel">
-                    <h3>Tabla de Eventos</h3>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Evento</th>
-                                <th>Fecha</th>
-                                <th>Cupos</th>
-                                <th>Estado</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Conferencia IA</td>
-                                <td>10/05/2026</td>
-                                <td>120</td>
-                                <td>Activo</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Torneo Universitario</td>
-                                <td>15/05/2026</td>
-                                <td>80</td>
-                                <td>Activo</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Festival Cultural</td>
-                                <td>20/05/2026</td>
-                                <td>150</td>
-                                <td>Pendiente</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-
+            <div class="flex items-center gap-6">
+                <button class="relative hover:text-[#1FB9DE]">
+                    <i class="fa-solid fa-bell text-2xl"></i>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">3</span>
+                </button>
+                <div class="flex items-center gap-3">
+                    <div class="text-right">
+                        <p class="font-medium text-sm">Ronald Andagoya</p>
+                        <p class="text-xs text-gray-500">Estudiante</p>
+                    </div>
+                    <div class="w-9 h-9 bg-[#1FB9DE] rounded-2xl flex items-center justify-center text-white font-medium">RA</div>
+                </div>
             </div>
-        </section>
+        </header>
 
-    </main>
+        <div class="p-8">
+            <h1 class="text-4xl font-bold">¡Bienvenido, Ronald!</h1>
+            <p class="text-gray-600 mt-1">Sistema de Eventos Universitarios</p>
 
-    <footer>
-        Sistema de Eventos Universitarios - Proyecto Académico
-    </footer>
+            <!-- Estadísticas -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
+                <div class="bg-white rounded-3xl p-6 card-hover border">
+                    <p class="text-sm text-gray-500">Eventos próximos</p>
+                    <p class="text-5xl font-bold text-[#1FB9DE] mt-2">12</p>
+                </div>
+                <div class="bg-white rounded-3xl p-6 card-hover border">
+                    <p class="text-sm text-gray-500">Mis inscripciones</p>
+                    <p class="text-5xl font-bold text-[#1FB9DE] mt-2">8</p>
+                </div>
+                <div class="bg-white rounded-3xl p-6 card-hover border">
+                    <p class="text-sm text-gray-500">Asistencia</p>
+                    <p class="text-5xl font-bold text-[#1FB9DE] mt-2">94%</p>
+                </div>
+            </div>
 
+            <h2 class="text-2xl font-semibold mb-6">Próximos Eventos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>
