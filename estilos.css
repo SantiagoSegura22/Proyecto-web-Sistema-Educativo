@@ -1,16 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
  
-/* =============================================
-   BASE
-   ============================================= */
+/*BASE*/
  
 body {
     font-family: 'Inter', sans-serif;
 }
  
-/* =============================================
-   COLORES Y BOTONES
-   ============================================= */
+/* COLORES Y BOTONES*/
  
 .btn-primary {
     background-color: #1FB9DE;
@@ -30,9 +26,7 @@ body {
     background: #1FB9DE;
 }
  
-/* =============================================
-   LOGIN — TABS
-   ============================================= */
+/*LOGIN — TABS*/
  
 .tab-active {
     border-bottom: 3px solid #1FB9DE;
@@ -40,9 +34,7 @@ body {
     font-weight: 600;
 }
  
-/* =============================================
-   DASHBOARD — CARDS
-   ============================================= */
+/*DASHBOARD — CARDS*/
  
 .card-hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -53,9 +45,7 @@ body {
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
 }
  
-/* =============================================
-   DASHBOARD — NAV LINKS (sidebar)
-   ============================================= */
+/*DASHBOARD — NAV LINKS (sidebar)*/
  
 .nav-link {
     transition: all 0.2s;
@@ -69,3 +59,46 @@ body {
     background-color: #1FB9DE;
     color: white;
 }
+
+/*MÓDULO ASISTENCIA*/
+
+/* --- Badges de estado --- */
+.badge-presente    { background: #d1fae5; color: #065f46; }
+.badge-ausente     { background: #fee2e2; color: #991b1b; }
+.badge-tardanza    { background: #fef3c7; color: #92400e; }
+.badge-justificado { background: #dbeafe; color: #1e40af; }
+
+/* --- Modal overlay --- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+
+/* --- Animación filas tabla --- */
+tbody tr { transition: background 0.15s; }
+tbody tr:hover { background: #f0fdff; }
+
+/* --- Paginación activa --- */
+.page-btn.active {
+    background: #1FB9DE;
+    color: white;
+    border-color: #1FB9DE;
+}
+
+/* --- Input focus (asistencia) --- */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #1FB9DE;
+    box-shadow: 0 0 0 3px rgba(31, 185, 222, 0.15);
+}
+
+/* --- Scroll horizontal en tabla --- */
+.table-wrap { overflow-x: auto; }
