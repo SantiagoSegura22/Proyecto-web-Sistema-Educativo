@@ -1,138 +1,71 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+ 
+/* =============================================
+   BASE
+   ============================================= */
+ 
 body {
-    background: #f4f4f4;
-    color: #222;
+    font-family: 'Inter', sans-serif;
 }
-
-header {
-    background: #1e293b;
+ 
+/* =============================================
+   COLORES Y BOTONES
+   ============================================= */
+ 
+.btn-primary {
+    background-color: #1FB9DE;
+    transition: all 0.3s ease;
+}
+ 
+.btn-primary:hover {
+    background-color: #1899b8;
+}
+ 
+/* Solo en login — eleva el botón al hacer hover */
+.login-page .btn-primary:hover {
+    transform: translateY(-2px);
+}
+ 
+.gradient-bg {
+    background: #1FB9DE;
+}
+ 
+/* =============================================
+   LOGIN — TABS
+   ============================================= */
+ 
+.tab-active {
+    border-bottom: 3px solid #1FB9DE;
+    color: #1FB9DE;
+    font-weight: 600;
+}
+ 
+/* =============================================
+   DASHBOARD — CARDS
+   ============================================= */
+ 
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+ 
+.card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+ 
+/* =============================================
+   DASHBOARD — NAV LINKS (sidebar)
+   ============================================= */
+ 
+.nav-link {
+    transition: all 0.2s;
+}
+ 
+.nav-link:hover {
+    background-color: #f3f4f6;
+}
+ 
+.nav-link.active {
+    background-color: #1FB9DE;
     color: white;
-    padding: 20px;
-}
-
-header h1 {
-    margin-bottom: 10px;
-}
-
-nav ul {
-    display: flex;
-    gap: 15px;
-    list-style: none;
-    flex-wrap: wrap;
-}
-
-nav a {
-    text-decoration: none;
-    color: white;
-    padding: 8px 12px;
-    border: 1px solid white;
-    border-radius: 5px;
-}
-
-.hero {
-    background: #cbd5e1;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-.contenedor {
-    width: 90%;
-    margin: 30px auto;
-}
-
-.seccion-titulo {
-    margin-bottom: 20px;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background: white;
-    border: 2px dashed #999;
-    padding: 20px;
-    border-radius: 10px;
-    min-height: 220px;
-}
-
-.card h3 {
-    margin-bottom: 15px;
-}
-
-.placeholder {
-    background: #ddd;
-    height: 120px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-}
-
-.boton {
-    display: inline-block;
-    padding: 10px 15px;
-    background: #1e293b;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.dashboard {
-    margin-top: 50px;
-}
-
-.paneles {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 20px;
-}
-
-.panel {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px dashed #aaa;
-    min-height: 300px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-table th,
-table td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-}
-
-footer {
-    margin-top: 50px;
-    background: #1e293b;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-@media(max-width: 768px) {
-    .paneles {
-        grid-template-columns: 1fr;
-    }
-
-    nav ul {
-        flex-direction: column;
-    }
 }
