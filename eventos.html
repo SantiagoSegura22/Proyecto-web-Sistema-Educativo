@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Tus estilos -->
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="css/estilos.css">
 
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -17,44 +17,11 @@
 
 <body class="bg-gray-50">
 
-<div class="fixed left-0 top-0 bottom-0 w-72 bg-white border-r shadow-xl z-50">
-        <div class="p-6 border-b">
-            <img src="img/logo-ug.png" alt="Universidad de Guayaquil" class="h-14 mx-auto">
-        </div>
-
-        <div class="p-6">
-            <div class="flex items-center gap-3 mb-10">
-                <div class="w-12 h-12 bg-[#1FB9DE] rounded-2xl flex items-center justify-center text-white text-2xl font-medium">RA</div>
-                <div>
-                    <p class="font-semibold">Ronald Andagoya</p>
-                    <p class="text-xs text-gray-500">Estudiante • Ingeniería</p>
-                </div>
-            </div>
-
-            <nav class="space-y-1">
-                <a href="index.html" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl">
-                    <i class="fa-solid fa-house w-5"></i>
-                    <span class="font-medium">Inicio</span>
-                </a>
-                <a href="eventos.html" class="nav-link active flex items-center gap-3 px-4 py-3 rounded-2xl">
-                    <i class="fa-solid fa-calendar w-5"></i>
-                    <span class="font-medium">Eventos</span>
-                </a>
-                <a href="#" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl">
-                    <i class="fa-solid fa-users w-5"></i>
-                    <span class="font-medium">Mis Inscripciones</span>
-                </a>
-                <a href="asistencia.html" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl">
-                    <i class="fa-solid fa-chart-bar w-5"></i>
-                    <span class="font-medium">Asistencia</span>
-                </a>
-            </nav>
-        </div>
-    </div>
+<div id="sidebar-container"></div>
 
     <div class="ml-72">
-        
-    
+
+
         <header class="bg-white border-b px-8 py-5 flex items-center justify-between">
             <div class="relative w-96">
                 <input type="text" placeholder="Buscar eventos..."
@@ -84,12 +51,38 @@
             <div>
                 <h1 class="text-4xl font-bold">Eventos</h1>
                 <p class="text-gray-500 mt-1">Gestión de eventos</p>
+
+                <!-- Categorías -->
+<div class="flex flex-wrap gap-3 mt-6">
+
+    <button class="px-5 py-2 rounded-2xl bg-[#1FB9DE] text-white font-semibold">
+        Todos
+    </button>
+
+    <button class="px-5 py-2 rounded-2xl bg-white border hover:bg-gray-100 font-semibold transition">
+        Tecnología
+    </button>
+
+    <button class="px-5 py-2 rounded-2xl bg-white border hover:bg-gray-100 font-semibold transition">
+        Académico
+    </button>
+
+    <button class="px-5 py-2 rounded-2xl bg-white border hover:bg-gray-100 font-semibold transition">
+        Deportivo
+    </button>
+
+    <button class="px-5 py-2 rounded-2xl bg-white border hover:bg-gray-100 font-semibold transition">
+        Cultural
+    </button>
+
+</div>
+
             </div>
-            <button onclick="abrirModalCrear()"
+            <a href="#formEvento"
                     class="btn-primary flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-2xl">
                 <i class="fa-solid fa-plus"></i>
                 Registrar Eventos
-            </button>
+            </a>
             </div>     
 
             <!-- TABLA -->
@@ -100,6 +93,7 @@
                             <th class="p-5">Evento</th>
                             <th class="p-5">Fecha</th>
                             <th class="p-5">Lugar</th>
+                            <th class="p-5">Categoría</th>
                             <th class="p-5">Estado</th>
                             <th class="p-5">Acciones</th>
                         </tr>
@@ -110,6 +104,11 @@
                             <td class="p-5">Feria de Emprendimiento</td>
                             <td class="p-5">12/06/2026</td>
                             <td class="p-5">Auditorio Principal</td>
+                            <td class="p-5">
+    <span class="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-semibold">
+        Académico
+    </span>
+</td>
                             <td class="p-5">
                                 <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">Activo</span>
                             </td>
@@ -125,8 +124,14 @@
 
                         <tr class="border-t">
                             <td class="p-5">Conferencia de Tecnología</td>
+
                             <td class="p-5">18/06/2026</td>
                             <td class="p-5">Bloque B - Aula 203</td>
+                            <td class="p-5">
+    <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">
+        Tecnología
+    </span>
+</td>
                             <td class="p-5">
                                 <span class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm font-semibold">Finalizado</span>
                             </td>
@@ -178,7 +183,7 @@
         </div>
     </div>
 
-    
+<script src="js/sidebar.js"></script>
+
 </body>
 </html>
- 

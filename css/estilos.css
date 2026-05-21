@@ -169,3 +169,46 @@ body {
     outline: none;
     border-color: #1FB9DE;
 }
+
+/* =============================================
+   ASISTENCIA - TABLA, BADGES Y MODALES
+   ============================================= */
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+.badge-presente {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.badge-ausente {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.badge-tardanza {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.badge-justificado {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(17 24 39 / 0.55);
+    padding: 24px;
+}
+
+.modal-overlay.open {
+    display: flex;
+}
