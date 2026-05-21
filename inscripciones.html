@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Inscripciones - Sistema de Eventos Universitarios</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Sidebar -->
+<div id="sidebar-container"></div>
+
+    <!-- Contenido Principal -->
+    <div class="ml-72">
+
+        <!-- Header -->
+        <header class="bg-white border-b px-8 py-5 flex items-center justify-between">
+
+            <div>
+                <h1 class="text-3xl font-bold">
+                    Mis Inscripciones
+                </h1>
+
+                <p class="text-gray-500 mt-1">
+                    Gestiona tus eventos registrados
+                </p>
+            </div>
+
+            <button class="bg-[#1FB9DE] hover:bg-[#19a7c8] text-white px-6 py-3 rounded-2xl font-medium transition">
+                <i class="fa-solid fa-plus mr-2"></i>
+                Nueva Inscripción
+            </button>
+
+        </header>
+
+        <!-- Contenido -->
+        <div class="p-8">
+
+            <!-- Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+
+                <div class="bg-white rounded-3xl border p-6">
+
+                    <p class="text-sm text-gray-500">
+                        Total Inscripciones
+                    </p>
+
+                    <p class="text-5xl font-bold text-[#1FB9DE] mt-2">
+                        8
+                    </p>
+
+                </div>
+
+                <div class="bg-white rounded-3xl border p-6">
+
+                    <p class="text-sm text-gray-500">
+                        Eventos Activos
+                    </p>
+
+                    <p class="text-5xl font-bold text-green-500 mt-2">
+                        6
+                    </p>
+
+                </div>
+
+                <div class="bg-white rounded-3xl border p-6">
+
+                    <p class="text-sm text-gray-500">
+                        Eventos Finalizados
+                    </p>
+
+                    <p class="text-5xl font-bold text-orange-400 mt-2">
+                        2
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Tabla -->
+            <div class="bg-white rounded-3xl border overflow-hidden">
+
+                <div class="p-6 border-b flex items-center justify-between">
+
+                    <h2 class="text-2xl font-semibold">
+                        Lista de Inscripciones
+                    </h2>
+
+                    <div class="relative">
+
+                        <input type="text"
+                               placeholder="Buscar..."
+                               class="bg-gray-100 rounded-2xl py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-[#1FB9DE]">
+
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+
+                    </div>
+
+                </div>
+
+                <div class="overflow-x-auto">
+
+                    <table class="w-full">
+
+                        <thead class="bg-gray-100">
+
+                            <tr class="text-left">
+
+                                <th class="p-5 font-semibold">
+                                    Evento
+                                </th>
+
+                                <th class="p-5 font-semibold">
+                                    Fecha
+                                </th>
+
+                                <th class="p-5 font-semibold">
+                                    Modalidad
+                                </th>
+
+                                <th class="p-5 font-semibold">
+                                    Estado
+                                </th>
+
+                                <th class="p-5 font-semibold text-center">
+                                    Acciones
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr class="border-b hover:bg-gray-50 transition">
+
+                                <td class="p-5">
+                                    Congreso de Tecnología 2026
+                                </td>
+
+                                <td class="p-5">
+                                    12/06/2026
+                                </td>
+
+                                <td class="p-5">
+                                    Presencial
+                                </td>
+
+                                <td class="p-5">
+
+                                    <span class="bg-green-100 text-green-600 px-4 py-1 rounded-full text-sm font-medium">
+                                        Activo
+                                    </span>
+
+                                </td>
+
+                                <td class="p-5">
+
+                                    <div class="flex items-center justify-center gap-3">
+
+                                        <button class="bg-blue-100 hover:bg-blue-200 text-blue-600 px-4 py-2 rounded-xl transition">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </button>
+
+                                        <button class="bg-red-100 hover:bg-red-200 text-red-600 px-4 py-2 rounded-xl transition">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr class="border-b hover:bg-gray-50 transition">
+
+                                <td class="p-5">
+                                    Taller de Inteligencia Artificial
+                                </td>
+
+                                <td class="p-5">
+                                    18/06/2026
+                                </td>
+
+                                <td class="p-5">
+                                    Virtual
+                                </td>
+
+                                <td class="p-5">
+
+                                    <span class="bg-yellow-100 text-yellow-700 px-4 py-1 rounded-full text-sm font-medium">
+                                        Pendiente
+                                    </span>
+
+                                </td>
+
+                                <td class="p-5">
+
+                                    <div class="flex items-center justify-center gap-3">
+
+                                        <button class="bg-blue-100 hover:bg-blue-200 text-blue-600 px-4 py-2 rounded-xl transition">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </button>
+
+                                        <button class="bg-red-100 hover:bg-red-200 text-red-600 px-4 py-2 rounded-xl transition">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr class="hover:bg-gray-50 transition">
+
+                                <td class="p-5">
+                                    Seminario de Ciberseguridad
+                                </td>
+
+                                <td class="p-5">
+                                    25/06/2026
+                                </td>
+
+                                <td class="p-5">
+                                    Híbrido
+                                </td>
+
+                                <td class="p-5">
+
+                                    <span class="bg-red-100 text-red-600 px-4 py-1 rounded-full text-sm font-medium">
+                                        Cancelado
+                                    </span>
+
+                                </td>
+
+                                <td class="p-5">
+
+                                    <div class="flex items-center justify-center gap-3">
+
+                                        <button class="bg-blue-100 hover:bg-blue-200 text-blue-600 px-4 py-2 rounded-xl transition">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </button>
+
+                                        <button class="bg-red-100 hover:bg-red-200 text-red-600 px-4 py-2 rounded-xl transition">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+<script src="js/sidebar.js"></script>
+
+</body>
+</html>
