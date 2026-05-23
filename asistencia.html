@@ -1,521 +1,708 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asistencia - Sistema de Eventos Universitarios</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="css/estilos.css">
-    
 </head>
-<body class="bg-gray-50">
 
-<!-- Sidebar -->
-<div id="sidebar-container"></div>
+<body>
 
- <!-- Contenido Principal -->
-    <div class="ml-72">
-        <header class="bg-white border-b px-8 py-5 flex items-center justify-between">
-            <div class="relative w-96">
-                <input type="text" placeholder="Buscar eventos..."
-                       class="w-full bg-gray-100 border border-transparent focus:border-[#1FB9DE] rounded-3xl py-3 pl-12 focus:outline-none">
-                <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-gray-400"></i>
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+    <div class="sidebar">
+
+        <!-- Logo -->
+        <div class="sidebar-logo">
+            <img src="img/logo-ug.png" alt="Universidad de Guayaquil">
+        </div>
+
+        <!-- Usuario -->
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                RA
             </div>
 
-            <div class="flex items-center gap-6">
-                <button class="relative hover:text-[#1FB9DE]">
-                    <i class="fa-solid fa-bell text-2xl"></i>
-                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">3</span>
+            <div class="user-info">
+                <p class="user-name">Ronald Andagoya</p>
+                <p class="user-role">Estudiante • Ingeniería</p>
+            </div>
+
+        </div>
+
+        <!-- Navegación -->
+        <nav class="sidebar-nav">
+
+            <a href="index.html" class="nav-link">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+            </a>
+
+            <a href="eventos.html" class="nav-link">
+                <i class="fa-solid fa-calendar"></i>
+                <span>Eventos</span>
+            </a>
+
+            <a href="inscripciones.html" class="nav-link">
+                <i class="fa-solid fa-ticket"></i>
+                <span>Mis inscripciones</span>
+            </a>
+
+            <a href="asistencia.html" class="nav-link active">
+                <i class="fa-solid fa-chart-bar"></i>
+                <span>Asistencia</span>
+            </a>
+
+            <a href="noticias.html" class="nav-link">
+                <i class="fa-solid fa-newspaper"></i>
+                <span>Noticias</span>
+            </a>
+
+            <div class="sidebar-divider"></div>
+
+            <a href="login.html" class="nav-link">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Salir</span>
+            </a>
+
+        </nav>
+
+    </div>
+
+    <!-- =========================================
+         CONTENIDO PRINCIPAL
+    ========================================== -->
+    <div class="main-content">
+
+        <!-- HEADER -->
+        <header class="main-header">
+
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text"
+                    placeholder="Buscar asistencia...">
+            </div>
+
+            <div class="user-menu">
+
+                <button class="notif-btn">
+
+                    <i class="fa-solid fa-bell"></i>
+
+                    <span class="notif-badge">
+                        3
+                    </span>
+
                 </button>
-                <div class="flex items-center gap-3">
-                    <div class="text-right">
-                        <p class="font-medium text-sm">Ronald Andagoya</p>
-                        <p class="text-xs text-gray-500">Estudiante</p>
+
+                <div class="user-info">
+
+                    <div class="user-details">
+                        <p class="user-name">
+                            Ronald Andagoya
+                        </p>
+
+                        <p class="user-role">
+                            Estudiante
+                        </p>
                     </div>
-                    <div class="w-9 h-9 bg-[#1FB9DE] rounded-2xl flex items-center justify-center text-white font-medium">RA</div>
+
+                    <div class="user-avatar">
+                        RA
+                    </div>
+
                 </div>
+
             </div>
+
         </header>
 
-    <!-- CONTENIDO -->
-    <div class="p-8">
+        <!-- DASHBOARD -->
+        <div class="dashboard-container">
 
-        <!-- Título + botón crear -->
-        <div class="flex items-center justify-between mb-2">
-            <div>
-                <h1 class="text-4xl font-bold">Asistencia</h1>
-                <p class="text-gray-500 mt-1">Gestión de registros de asistencia a eventos</p>
-            </div>
-            <button onclick="abrirModalCrear()"
-                    class="btn-primary flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-2xl">
-                <i class="fa-solid fa-plus"></i>
-                Registrar Asistencia
-            </button>
-        </div>
+            <!-- TITULO -->
+            <div class="section-header">
 
-        <!-- Estadísticas rápidas -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-5 my-8">
-            <div class="bg-white rounded-3xl p-5 border">
-                <p class="text-sm text-gray-500">Total registros</p>
-                <p class="text-4xl font-bold text-[#1FB9DE] mt-1">48</p>
-            </div>
-            <div class="bg-white rounded-3xl p-5 border">
-                <p class="text-sm text-gray-500">Presentes</p>
-                <p class="text-4xl font-bold text-green-500 mt-1">35</p>
-            </div>
-            <div class="bg-white rounded-3xl p-5 border">
-                <p class="text-sm text-gray-500">Ausentes</p>
-                <p class="text-4xl font-bold text-red-400 mt-1">8</p>
-            </div>
-            <div class="bg-white rounded-3xl p-5 border">
-                <p class="text-sm text-gray-500">Tardanzas</p>
-                <p class="text-4xl font-bold text-amber-400 mt-1">5</p>
-            </div>
-        </div>
+                <div>
+                    <h2>Asistencia</h2>
 
-        <!-- Filtros -->
-        <div class="bg-white rounded-3xl border p-5 mb-6 flex flex-wrap gap-4 items-end">
-            <div class="flex-1 min-w-[180px]">
-                <label class="text-sm font-medium text-gray-600 mb-1 block">Evento</label>
-                <select class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm transition">
-                    <option value="">Todos los eventos</option>
-                    <option>Hackathon UG 2025</option>
-                    <option>Feria de Ciencias</option>
-                    <option>Seminario de IA</option>
-                    <option>Torneo de Fútbol</option>
-                </select>
-            </div>
-            <div class="flex-1 min-w-[160px]">
-                <label class="text-sm font-medium text-gray-600 mb-1 block">Estado</label>
-                <select class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm transition">
-                    <option value="">Todos</option>
-                    <option>Presente</option>
-                    <option>Ausente</option>
-                    <option>Tardanza</option>
-                    <option>Justificado</option>
-                </select>
-            </div>
-            <div class="flex-1 min-w-[160px]">
-                <label class="text-sm font-medium text-gray-600 mb-1 block">Fecha</label>
-                <input type="date" class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm transition">
-            </div>
-            <button class="btn-primary text-white px-5 py-2.5 rounded-xl text-sm font-medium flex items-center gap-2">
-                <i class="fa-solid fa-filter"></i> Filtrar
-            </button>
-            <button class="border border-gray-300 text-gray-600 px-5 py-2.5 rounded-xl text-sm font-medium flex items-center gap-2 hover:bg-gray-50 transition">
-                <i class="fa-solid fa-rotate-left"></i> Limpiar
-            </button>
-        </div>
+                    <p>
+                        Gestión de registros de asistencia
+                        a eventos universitarios
+                    </p>
+                </div>
 
-        <!-- Tabla CRUD -->
-        <div class="bg-white rounded-3xl border overflow-hidden">
-            <div class="flex items-center justify-between px-6 py-4 border-b">
-                <p class="font-semibold text-gray-700">Registros de asistencia</p>
-                <button class="text-sm text-[#1FB9DE] flex items-center gap-1 hover:underline">
-                    <i class="fa-solid fa-file-export text-xs"></i> Exportar
+                <button class="btn-primary"
+                    onclick="abrirModalCrear()">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Registrar asistencia
+
                 </button>
+
             </div>
 
-            <div class="table-wrap">
-                <table class="w-full text-sm">
+            <!-- ESTADISTICAS -->
+            <section class="stats-asistencia">
+
+                <div class="stat-asistencia-card presente">
+
+                    <p class="stat-asistencia-number">
+                        48
+                    </p>
+
+                    <p class="stat-asistencia-label">
+                        Total registros
+                    </p>
+
+                </div>
+
+                <div class="stat-asistencia-card presente">
+
+                    <p class="stat-asistencia-number">
+                        35
+                    </p>
+
+                    <p class="stat-asistencia-label">
+                        Presentes
+                    </p>
+
+                </div>
+
+                <div class="stat-asistencia-card ausente">
+
+                    <p class="stat-asistencia-number">
+                        8
+                    </p>
+
+                    <p class="stat-asistencia-label">
+                        Ausentes
+                    </p>
+
+                </div>
+
+                <div class="stat-asistencia-card tardanza">
+
+                    <p class="stat-asistencia-number">
+                        5
+                    </p>
+
+                    <p class="stat-asistencia-label">
+                        Tardanzas
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- FILTROS -->
+            <div class="form-card">
+
+                <h3>Filtros</h3>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>Evento</label>
+
+                        <select class="form-select">
+
+                            <option>
+                                Todos los eventos
+                            </option>
+
+                            <option>
+                                Hackathon UG 2025
+                            </option>
+
+                            <option>
+                                Feria de Ciencias
+                            </option>
+
+                            <option>
+                                Seminario IA
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Estado</label>
+
+                        <select class="form-select">
+
+                            <option>Todos</option>
+                            <option>Presente</option>
+                            <option>Ausente</option>
+                            <option>Tardanza</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Fecha</label>
+
+                        <input type="date"
+                            class="form-input">
+
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+
+                    <button class="btn-primary">
+
+                        <i class="fa-solid fa-filter"></i>
+
+                        Filtrar
+
+                    </button>
+
+                    <button class="btn-secondary">
+
+                        <i class="fa-solid fa-rotate-left"></i>
+
+                        Limpiar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- TABLA -->
+            <div class="asistencia-table-container">
+
+                <table class="asistencia-table">
+
                     <thead>
-                        <tr class="bg-gray-50 text-gray-500 text-left">
-                            <th class="px-6 py-4 font-medium">#</th>
-                            <th class="px-6 py-4 font-medium">Estudiante</th>
-                            <th class="px-6 py-4 font-medium">Evento</th>
-                            <th class="px-6 py-4 font-medium">Fecha</th>
-                            <th class="px-6 py-4 font-medium">Hora entrada</th>
-                            <th class="px-6 py-4 font-medium">Estado</th>
-                            <th class="px-6 py-4 font-medium">Observaciones</th>
-                            <th class="px-6 py-4 font-medium text-center">Acciones</th>
+
+                        <tr>
+
+                            <th>#</th>
+                            <th>Estudiante</th>
+                            <th>Evento</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Estado</th>
+                            <th>Observaciones</th>
+                            <th>Acciones</th>
+
                         </tr>
+
                     </thead>
-                    <tbody id="tabla-body" class="divide-y divide-gray-100">
 
-                        <!-- Fila 1 -->
+                    <tbody>
+
+                        <!-- FILA -->
                         <tr>
-                            <td class="px-6 py-4 text-gray-400">001</td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-xl bg-[#1FB9DE] flex items-center justify-center text-white text-xs font-semibold">RA</div>
-                                    <div>
-                                        <p class="font-medium text-gray-800">Ronald Andagoya</p>
-                                        <p class="text-xs text-gray-400">ronald@ug.edu.ec</p>
-                                    </div>
-                                </div>
+
+                            <td>001</td>
+
+                            <td>
+
+                                <strong>
+                                    Ronald Andagoya
+                                </strong>
+
+                                <br>
+
+                                <small>
+                                    ronald@ug.edu.ec
+                                </small>
+
                             </td>
-                            <td class="px-6 py-4 text-gray-700">Hackathon UG 2025</td>
-                            <td class="px-6 py-4 text-gray-600">15/05/2025</td>
-                            <td class="px-6 py-4 text-gray-600">08:05</td>
-                            <td class="px-6 py-4">
-                                <span class="badge-presente text-xs font-semibold px-3 py-1 rounded-full">Presente</span>
+
+                            <td>
+                                Hackathon UG 2025
                             </td>
-                            <td class="px-6 py-4 text-gray-500 max-w-[160px] truncate">—</td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center justify-center gap-2">
-                                    <button onclick="abrirModalVer(1)" class="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center hover:bg-blue-100 transition" title="Ver">
-                                        <i class="fa-solid fa-eye text-xs"></i>
-                                    </button>
-                                    <button onclick="abrirModalEditar(1)" class="w-8 h-8 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center hover:bg-amber-100 transition" title="Editar">
-                                        <i class="fa-solid fa-pen text-xs"></i>
-                                    </button>
-                                    <button onclick="abrirModalEliminar(1)" class="w-8 h-8 rounded-xl bg-red-50 text-red-400 flex items-center justify-center hover:bg-red-100 transition" title="Eliminar">
-                                        <i class="fa-solid fa-trash text-xs"></i>
-                                    </button>
-                                </div>
+
+                            <td>
+                                15/05/2025
                             </td>
+
+                            <td>
+                                08:05
+                            </td>
+
+                            <td>
+
+                                <span class="asistencia-badge badge-presente">
+
+                                    Presente
+
+                                </span>
+
+                            </td>
+
+                            <td>
+                                Sin observaciones
+                            </td>
+
+                            <td>
+
+                                <button class="action-icon view">
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+                                <button class="action-icon">
+
+                                    <i class="fa-solid fa-pen"></i>
+
+                                </button>
+
+                                <button class="action-icon delete">
+
+                                    <i class="fa-solid fa-trash"></i>
+
+                                </button>
+
+                            </td>
+
                         </tr>
 
-                        <!-- Fila 2 -->
+                        <!-- FILA -->
                         <tr>
-                            <td class="px-6 py-4 text-gray-400">002</td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-xl bg-purple-400 flex items-center justify-center text-white text-xs font-semibold">MV</div>
-                                    <div>
-                                        <p class="font-medium text-gray-800">María Vera</p>
-                                        <p class="text-xs text-gray-400">m.vera@ug.edu.ec</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 text-gray-700">Feria de Ciencias</td>
-                            <td class="px-6 py-4 text-gray-600">16/05/2025</td>
-                            <td class="px-6 py-4 text-gray-600">09:32</td>
-                            <td class="px-6 py-4">
-                                <span class="badge-tardanza text-xs font-semibold px-3 py-1 rounded-full">Tardanza</span>
-                            </td>
-                            <td class="px-6 py-4 text-gray-500 max-w-[160px] truncate">Tráfico en vía principal</td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center justify-center gap-2">
-                                    <button onclick="abrirModalVer(2)" class="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center hover:bg-blue-100 transition"><i class="fa-solid fa-eye text-xs"></i></button>
-                                    <button onclick="abrirModalEditar(2)" class="w-8 h-8 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center hover:bg-amber-100 transition"><i class="fa-solid fa-pen text-xs"></i></button>
-                                    <button onclick="abrirModalEliminar(2)" class="w-8 h-8 rounded-xl bg-red-50 text-red-400 flex items-center justify-center hover:bg-red-100 transition"><i class="fa-solid fa-trash text-xs"></i></button>
-                                </div>
-                            </td>
-                        </tr>
 
-                        <!-- Fila 3 -->
-                        <tr>
-                            <td class="px-6 py-4 text-gray-400">003</td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-xl bg-green-400 flex items-center justify-center text-white text-xs font-semibold">JP</div>
-                                    <div>
-                                        <p class="font-medium text-gray-800">Jorge Pinto</p>
-                                        <p class="text-xs text-gray-400">j.pinto@ug.edu.ec</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 text-gray-700">Seminario de IA</td>
-                            <td class="px-6 py-4 text-gray-600">17/05/2025</td>
-                            <td class="px-6 py-4 text-gray-500">—</td>
-                            <td class="px-6 py-4">
-                                <span class="badge-ausente text-xs font-semibold px-3 py-1 rounded-full">Ausente</span>
-                            </td>
-                            <td class="px-6 py-4 text-gray-500 max-w-[160px] truncate">Sin justificación</td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center justify-center gap-2">
-                                    <button onclick="abrirModalVer(3)" class="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center hover:bg-blue-100 transition"><i class="fa-solid fa-eye text-xs"></i></button>
-                                    <button onclick="abrirModalEditar(3)" class="w-8 h-8 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center hover:bg-amber-100 transition"><i class="fa-solid fa-pen text-xs"></i></button>
-                                    <button onclick="abrirModalEliminar(3)" class="w-8 h-8 rounded-xl bg-red-50 text-red-400 flex items-center justify-center hover:bg-red-100 transition"><i class="fa-solid fa-trash text-xs"></i></button>
-                                </div>
-                            </td>
-                        </tr>
+                            <td>002</td>
 
-                        <!-- Fila 4 -->
-                        <tr>
-                            <td class="px-6 py-4 text-gray-400">004</td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-xl bg-pink-400 flex items-center justify-center text-white text-xs font-semibold">LC</div>
-                                    <div>
-                                        <p class="font-medium text-gray-800">Lucía Castro</p>
-                                        <p class="text-xs text-gray-400">l.castro@ug.edu.ec</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 text-gray-700">Torneo de Fútbol</td>
-                            <td class="px-6 py-4 text-gray-600">18/05/2025</td>
-                            <td class="px-6 py-4 text-gray-600">07:58</td>
-                            <td class="px-6 py-4">
-                                <span class="badge-justificado text-xs font-semibold px-3 py-1 rounded-full">Justificado</span>
-                            </td>
-                            <td class="px-6 py-4 text-gray-500 max-w-[160px] truncate">Certificado médico entregado</td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center justify-center gap-2">
-                                    <button onclick="abrirModalVer(4)" class="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center hover:bg-blue-100 transition"><i class="fa-solid fa-eye text-xs"></i></button>
-                                    <button onclick="abrirModalEditar(4)" class="w-8 h-8 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center hover:bg-amber-100 transition"><i class="fa-solid fa-pen text-xs"></i></button>
-                                    <button onclick="abrirModalEliminar(4)" class="w-8 h-8 rounded-xl bg-red-50 text-red-400 flex items-center justify-center hover:bg-red-100 transition"><i class="fa-solid fa-trash text-xs"></i></button>
-                                </div>
-                            </td>
-                        </tr>
+                            <td>
 
-                        <!-- Fila 5 -->
-                        <tr>
-                            <td class="px-6 py-4 text-gray-400">005</td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-xl bg-orange-400 flex items-center justify-center text-white text-xs font-semibold">DM</div>
-                                    <div>
-                                        <p class="font-medium text-gray-800">Diego Morales</p>
-                                        <p class="text-xs text-gray-400">d.morales@ug.edu.ec</p>
-                                    </div>
-                                </div>
+                                <strong>
+                                    María Vera
+                                </strong>
+
+                                <br>
+
+                                <small>
+                                    m.vera@ug.edu.ec
+                                </small>
+
                             </td>
-                            <td class="px-6 py-4 text-gray-700">Hackathon UG 2025</td>
-                            <td class="px-6 py-4 text-gray-600">15/05/2025</td>
-                            <td class="px-6 py-4 text-gray-600">08:01</td>
-                            <td class="px-6 py-4">
-                                <span class="badge-presente text-xs font-semibold px-3 py-1 rounded-full">Presente</span>
+
+                            <td>
+                                Feria de Ciencias
                             </td>
-                            <td class="px-6 py-4 text-gray-500">—</td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center justify-center gap-2">
-                                    <button onclick="abrirModalVer(5)" class="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center hover:bg-blue-100 transition"><i class="fa-solid fa-eye text-xs"></i></button>
-                                    <button onclick="abrirModalEditar(5)" class="w-8 h-8 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center hover:bg-amber-100 transition"><i class="fa-solid fa-pen text-xs"></i></button>
-                                    <button onclick="abrirModalEliminar(5)" class="w-8 h-8 rounded-xl bg-red-50 text-red-400 flex items-center justify-center hover:bg-red-100 transition"><i class="fa-solid fa-trash text-xs"></i></button>
-                                </div>
+
+                            <td>
+                                16/05/2025
                             </td>
+
+                            <td>
+                                09:30
+                            </td>
+
+                            <td>
+
+                                <span class="asistencia-badge badge-tardanza">
+
+                                    Tardanza
+
+                                </span>
+
+                            </td>
+
+                            <td>
+                                Tráfico en vía principal
+                            </td>
+
+                            <td>
+
+                                <button class="action-icon view">
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+                                <button class="action-icon">
+
+                                    <i class="fa-solid fa-pen"></i>
+
+                                </button>
+
+                                <button class="action-icon delete">
+
+                                    <i class="fa-solid fa-trash"></i>
+
+                                </button>
+
+                            </td>
+
                         </tr>
 
                     </tbody>
+
                 </table>
+
             </div>
 
-            <!-- Paginación -->
-            <div class="flex items-center justify-between px-6 py-4 border-t text-sm text-gray-500">
-                <p>Mostrando 1–5 de 48 registros</p>
-                <div class="flex items-center gap-1">
-                    <button class="w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition">
-                        <i class="fa-solid fa-chevron-left text-xs"></i>
-                    </button>
-                    <button class="page-btn active w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center font-medium transition">1</button>
-                    <button class="page-btn w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition">2</button>
-                    <button class="page-btn w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition">3</button>
-                    <span class="px-1">...</span>
-                    <button class="page-btn w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition">10</button>
-                    <button class="w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition">
-                        <i class="fa-solid fa-chevron-right text-xs"></i>
-                    </button>
-                </div>
+            <!-- PAGINACION -->
+            <div class="pagination">
+
+                <button class="page-btn">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <button class="page-btn active">
+                    1
+                </button>
+
+                <button class="page-btn">
+                    2
+                </button>
+
+                <button class="page-btn">
+                    3
+                </button>
+
+                <button class="page-btn">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
             </div>
+
         </div>
+
     </div>
-</div>
 
+    <!-- =========================================
+         MODAL FORM
+    ========================================== -->
+    <div class="modal-overlay"
+        id="modal-form">
 
-<!-- ====================================================
-     MODAL: CREAR / EDITAR
-     ==================================================== -->
-<div class="modal-overlay" id="modal-form">
-    <div class="bg-white rounded-3xl w-full max-w-lg mx-4 shadow-2xl overflow-hidden">
-        <!-- Header modal -->
-        <div class="flex items-center justify-between px-7 py-5 border-b">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-[#1FB9DE] rounded-2xl flex items-center justify-center text-white">
-                    <i class="fa-solid fa-clipboard-user"></i>
-                </div>
-                <h2 class="text-xl font-semibold" id="modal-form-titulo">Registrar Asistencia</h2>
+        <div class="modal-container">
+
+            <div class="modal-header">
+
+                <h3 id="modal-title">
+                    Registrar asistencia
+                </h3>
+
+                <button class="modal-close"
+                    onclick="cerrarModal('modal-form')">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
             </div>
-            <button onclick="cerrarModal('modal-form')" class="w-9 h-9 rounded-xl bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition">
-                <i class="fa-solid fa-xmark text-gray-500"></i>
-            </button>
+
+            <div class="modal-body">
+
+                <div class="asistencia-form-grid">
+
+                    <div class="asistencia-form-group">
+
+                        <label>
+                            Estudiante
+                        </label>
+
+                        <input type="text"
+                            placeholder="Nombre completo">
+
+                    </div>
+
+                    <div class="asistencia-form-group">
+
+                        <label>
+                            Correo
+                        </label>
+
+                        <input type="email"
+                            placeholder="correo@ug.edu.ec">
+
+                    </div>
+
+                    <div class="asistencia-form-group">
+
+                        <label>
+                            Evento
+                        </label>
+
+                        <select>
+
+                            <option>
+                                Seleccionar evento
+                            </option>
+
+                            <option>
+                                Hackathon UG 2025
+                            </option>
+
+                            <option>
+                                Seminario IA
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="asistencia-form-group">
+
+                        <label>
+                            Estado
+                        </label>
+
+                        <select>
+
+                            <option>
+                                Presente
+                            </option>
+
+                            <option>
+                                Ausente
+                            </option>
+
+                            <option>
+                                Tardanza
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button class="btn-secondary-modal"
+                    onclick="cerrarModal('modal-form')">
+
+                    Cancelar
+
+                </button>
+
+                <button class="btn-primary">
+
+                    Guardar
+
+                </button>
+
+            </div>
+
         </div>
 
-        <!-- Cuerpo -->
-        <div class="px-7 py-6 space-y-5">
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Estudiante</label>
-                    <input type="text" placeholder="Nombre completo"
-                           class="w-full border border-gray-300 rounded-2xl px-4 py-3 text-sm transition">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Correo</label>
-                    <input type="email" placeholder="correo@ug.edu.ec"
-                           class="w-full border border-gray-300 rounded-2xl px-4 py-3 text-sm transition">
-                </div>
-            </div>
-
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Evento</label>
-                <select class="w-full border border-gray-300 rounded-2xl px-4 py-3 text-sm transition">
-                    <option value="">Seleccionar evento...</option>
-                    <option>Hackathon UG 2025</option>
-                    <option>Feria de Ciencias</option>
-                    <option>Seminario de IA</option>
-                    <option>Torneo de Fútbol</option>
-                </select>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Fecha</label>
-                    <input type="date" class="w-full border border-gray-300 rounded-2xl px-4 py-3 text-sm transition">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Hora de entrada</label>
-                    <input type="time" class="w-full border border-gray-300 rounded-2xl px-4 py-3 text-sm transition">
-                </div>
-            </div>
-
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Estado</label>
-                <select class="w-full border border-gray-300 rounded-2xl px-4 py-3 text-sm transition">
-                    <option value="">Seleccionar estado...</option>
-                    <option>Presente</option>
-                    <option>Ausente</option>
-                    <option>Tardanza</option>
-                    <option>Justificado</option>
-                </select>
-            </div>
-
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Observaciones</label>
-                <textarea rows="3" placeholder="Observaciones adicionales..."
-                          class="w-full border border-gray-300 rounded-2xl px-4 py-3 text-sm resize-none transition"></textarea>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="flex gap-3 px-7 py-5 border-t bg-gray-50">
-            <button onclick="cerrarModal('modal-form')"
-                    class="flex-1 border border-gray-300 text-gray-600 font-semibold py-3 rounded-2xl hover:bg-gray-100 transition">
-                Cancelar
-            </button>
-            <button class="flex-1 btn-primary text-white font-semibold py-3 rounded-2xl" id="modal-form-btn">
-                Guardar registro
-            </button>
-        </div>
     </div>
-</div>
 
+    <!-- =========================================
+         MODAL ELIMINAR
+    ========================================== -->
+    <div class="modal-overlay"
+        id="modal-eliminar">
 
-<!-- ====================================================
-     MODAL: VER DETALLE
-     ==================================================== -->
-<div class="modal-overlay" id="modal-ver">
-    <div class="bg-white rounded-3xl w-full max-w-md mx-4 shadow-2xl overflow-hidden">
-        <div class="flex items-center justify-between px-7 py-5 border-b">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-500">
-                    <i class="fa-solid fa-eye"></i>
-                </div>
-                <h2 class="text-xl font-semibold">Detalle de Asistencia</h2>
+        <div class="modal-container">
+
+            <div class="modal-header">
+
+                <h3>
+                    Eliminar registro
+                </h3>
+
+                <button class="modal-close"
+                    onclick="cerrarModal('modal-eliminar')">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
             </div>
-            <button onclick="cerrarModal('modal-ver')" class="w-9 h-9 rounded-xl bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition">
-                <i class="fa-solid fa-xmark text-gray-500"></i>
-            </button>
+
+            <div class="modal-body">
+
+                <p>
+                    ¿Seguro que deseas eliminar
+                    este registro?
+                </p>
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button class="btn-secondary-modal"
+                    onclick="cerrarModal('modal-eliminar')">
+
+                    Cancelar
+
+                </button>
+
+                <button class="btn-danger">
+
+                    Eliminar
+
+                </button>
+
+            </div>
+
         </div>
 
-        <div class="px-7 py-6 space-y-4">
-            <!-- Avatar -->
-            <div class="flex items-center gap-4 mb-2">
-                <div class="w-14 h-14 bg-[#1FB9DE] rounded-2xl flex items-center justify-center text-white text-xl font-semibold">RA</div>
-                <div>
-                    <p class="text-lg font-semibold">Ronald Andagoya</p>
-                    <p class="text-sm text-gray-500">ronald@ug.edu.ec</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-3 text-sm">
-                <div class="bg-gray-50 rounded-2xl p-4">
-                    <p class="text-gray-500 mb-1">Evento</p>
-                    <p class="font-semibold">Hackathon UG 2025</p>
-                </div>
-                <div class="bg-gray-50 rounded-2xl p-4">
-                    <p class="text-gray-500 mb-1">Fecha</p>
-                    <p class="font-semibold">15/05/2025</p>
-                </div>
-                <div class="bg-gray-50 rounded-2xl p-4">
-                    <p class="text-gray-500 mb-1">Hora entrada</p>
-                    <p class="font-semibold">08:05</p>
-                </div>
-                <div class="bg-gray-50 rounded-2xl p-4">
-                    <p class="text-gray-500 mb-1">Estado</p>
-                    <span class="badge-presente text-xs font-semibold px-3 py-1 rounded-full">Presente</span>
-                </div>
-            </div>
-
-            <div class="bg-gray-50 rounded-2xl p-4 text-sm">
-                <p class="text-gray-500 mb-1">Observaciones</p>
-                <p class="font-medium text-gray-700">Sin observaciones registradas.</p>
-            </div>
-        </div>
-
-        <div class="px-7 py-5 border-t bg-gray-50">
-            <button onclick="cerrarModal('modal-ver')"
-                    class="w-full btn-primary text-white font-semibold py-3 rounded-2xl">
-                Cerrar
-            </button>
-        </div>
     </div>
-</div>
 
+    <!-- =========================================
+         SCRIPT
+    ========================================== -->
+    <script>
 
-<!-- ====================================================
-     MODAL: ELIMINAR
-     ==================================================== -->
-<div class="modal-overlay" id="modal-eliminar">
-    <div class="bg-white rounded-3xl w-full max-w-sm mx-4 shadow-2xl overflow-hidden">
-        <div class="px-7 py-6 text-center">
-            <div class="w-16 h-16 bg-red-100 rounded-3xl flex items-center justify-center text-red-400 text-2xl mx-auto mb-4">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-            </div>
-            <h2 class="text-xl font-bold mb-2">¿Eliminar registro?</h2>
-            <p class="text-gray-500 text-sm">Esta acción no se puede deshacer. El registro de asistencia será eliminado permanentemente.</p>
-        </div>
-        <div class="flex gap-3 px-7 pb-6">
-            <button onclick="cerrarModal('modal-eliminar')"
-                    class="flex-1 border border-gray-300 text-gray-600 font-semibold py-3 rounded-2xl hover:bg-gray-100 transition">
-                Cancelar
-            </button>
-            <button class="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold py-3 rounded-2xl transition">
-                Sí, eliminar
-            </button>
-        </div>
-    </div>
-</div>
+        function abrirModalCrear() {
 
+            document
+                .getElementById('modal-title')
+                .innerText = 'Registrar asistencia';
 
-<!-- ====================================================
-     SCRIPTS
-     ==================================================== -->
-<script>
-    function abrirModalCrear() {
-        document.getElementById('modal-form-titulo').textContent = 'Registrar Asistencia';
-        document.getElementById('modal-form-btn').textContent = 'Guardar registro';
-        document.getElementById('modal-form').classList.add('open');
-    }
+            document
+                .getElementById('modal-form')
+                .classList.add('open');
 
-    function abrirModalEditar(id) {
-        document.getElementById('modal-form-titulo').textContent = 'Editar Asistencia';
-        document.getElementById('modal-form-btn').textContent = 'Guardar cambios';
-        document.getElementById('modal-form').classList.add('open');
-    }
+        }
 
-    function abrirModalVer(id) {
-        document.getElementById('modal-ver').classList.add('open');
-    }
+        function cerrarModal(id) {
 
-    function abrirModalEliminar(id) {
-        document.getElementById('modal-eliminar').classList.add('open');
-    }
+            document
+                .getElementById(id)
+                .classList.remove('open');
 
-    function cerrarModal(id) {
-        document.getElementById(id).classList.remove('open');
-    }
+        }
 
-    // Cerrar al hacer clic fuera del modal
-    document.querySelectorAll('.modal-overlay').forEach(overlay => {
-        overlay.addEventListener('click', function(e) {
-            if (e.target === this) cerrarModal(this.id);
-        });
-    });
-</script>
+        document
+            .querySelectorAll('.modal-overlay')
+            .forEach(overlay => {
 
-<script src="js/sidebar.js"></script>
+                overlay.addEventListener('click', function (e) {
+
+                    if (e.target === this) {
+
+                        cerrarModal(this.id);
+
+                    }
+
+                });
+
+            });
+
+    </script>
 
 </body>
-</html>  
+
+</html>
