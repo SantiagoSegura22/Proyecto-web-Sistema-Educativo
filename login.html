@@ -3,144 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - Sistema de Eventos Universitarios</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="estilos.css">
+    <title>Acceso - Sistema de Eventos Universitarios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
-<body class="bg-gray-50 min-h-screen">
+<body class="login-body">
 
-    <div class="min-h-screen flex">
-        <!-- Lado Izquierdo -->
-        <div class="hidden lg:flex w-1/2 gradient-bg text-white flex-col justify-center items-center p-12 relative">
-            <div class="absolute top-8 left-8">
-                <img src="img/logo-ug.png" alt="Universidad de Guayaquil" class="h-12">
-            </div>
-
-            <div class="text-center mt-12">
-                <h1 class="text-5xl font-bold leading-tight mb-4">
-                    Conecta, Participa,<br>
-                    <span class="inline-flex items-center gap-3">
-                        ¡Celebra!
-                    </span>
-                </h1>
-                <p class="text-lg opacity-90">
-                    Sistema Oficial de Eventos Acad♦micos, Culturales y Deportivos
-                </p>
-            </div>
-
-            <div class="mt-16">
-                <img src="img/logo-ug.png" alt="Universidad de Guayaquil" class="h-64 drop-shadow-2xl">
-            </div>
-        </div>
-
-        <!-- Lado Derecho - Formulario -->
-        <div class="flex-1 flex items-center justify-center p-8">
-            <div class="w-full max-w-md">
-                <!-- Logo móvil -->
-                <div class="lg:hidden flex justify-center mb-8">
-                    <img src="img/logo-ug.png" alt="UG" class="h-16">
-                </div>
-
-                <!-- Tabs -->
-                <div class="flex border-b mb-8">
-                    <a href="#login" id="tab-login-link"
-                       class="flex-1 text-center pb-4 tab-active">
-                        Iniciar Sesión
-                    </a>
-                    <a href="#register" id="tab-register-link"
-                       class="flex-1 text-center pb-4 text-gray-500 hover:text-gray-700">
-                        Registrarse
-                    </a>
-                </div>
-
-                <!-- LOGIN -->
-                <div id="login" class="block">
-                    <h2 class="text-3xl font-semibold mb-1">Bienvenido de nuevo</h2>
-                    <p class="text-gray-500 mb-8">Ingresa tus credenciales</p>
-
-                    <div class="space-y-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Correo institucional</label>
-                            <div class="relative">
-                                <i class="fa-solid fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                                <input type="email" value="demo@ug.edu.ec"
-                                       class="w-full pl-12 py-4 border border-gray-300 rounded-2xl focus:outline-none focus:border-[#1FB9DE]">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Contraseña</label>
-                            <div class="relative">
-                                <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                                <input type="password" value="123456"
-                                       class="w-full pl-12 py-4 border border-gray-300 rounded-2xl focus:outline-none focus:border-[#1FB9DE]">
-                            </div>
-                        </div>
-
-                        <a href="index.html"
-                           class="block text-center btn-primary w-full py-4 text-white font-semibold rounded-2xl text-lg">
-                            Iniciar Sesión
-                        </a>
-                    </div>
-                </div>
-
-                <!-- REGISTRO -->
-                <div id="register" class="hidden">
-                    <h2 class="text-3xl font-semibold mb-6">Crear cuenta</h2>
-                    <p class="text-gray-500 mb-6">Únete al Sistema de Eventos Universitarios</p>
-
-                    <div class="space-y-5">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:border-[#1FB9DE]" placeholder="Ronald">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Apellido</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:border-[#1FB9DE]" placeholder="Andagoya">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Correo institucional</label>
-                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:border-[#1FB9DE]" placeholder="tu.correo@ug.edu.ec">
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Rol</label>
-                            <select class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:border-[#1FB9DE]">
-                                <option>Estudiante</option>
-                                <option>Docente</option>
-                                <option>Administrativo</option>
-                                <option>Organizador</option>
-                            </select>
-                        </div>
-
-                        <a href="index.html"
-                           class="block text-center btn-primary w-full py-4 text-white font-semibold rounded-2xl text-lg">
-                            Crear Cuenta
-                        </a>
-                    </div>
-                </div>
-            </div>
+<div class="login-main">
+    <!-- Lado izquierdo: imagen institucional y eslogan -->
+    <div class="login-hero">
+        <div class="hero-content">
+            <!-- Corregido: logo-ug.png -->
+            <img src="img/logo-ug.png" alt="Universidad de Guayaquil" class="hero-logo">
+            <h1>Conecta, Participa, <br><span>¡Celebra!</span></h1>
+            <p>Sistema Oficial de Eventos Académicos, Culturales y Deportivos</p>
         </div>
     </div>
 
-    <script>
-        // Cambio entre pestañas con el hash (#login o #register)
-        function handleHash() {
-            const isRegister = window.location.hash === '#register';
+    <!-- Lado derecho: formulario de login + registro -->
+    <div class="login-form-container">
+        <div class="form-card-panel">
+            <div class="tabs-wrapper">
+                <a href="#" id="tabLoginBtn" class="tab-link active-tab">Iniciar Sesión</a>
+                <a href="#" id="tabRegisterBtn" class="tab-link">Registrarse</a>
+            </div>
 
-            document.getElementById('login').classList.toggle('hidden', isRegister);
-            document.getElementById('register').classList.toggle('hidden', !isRegister);
+            <!-- PANEL LOGIN -->
+            <div id="loginPanel" class="auth-panel">
+                <h2>Bienvenido de nuevo</h2>
+                <p class="sub-text">Ingresa tus credenciales</p>
+                
+                <div class="input-group">
+                    <label>Correo institucional</label>
+                    <div class="input-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="demo@ug.edu.ec" value="demo@ug.edu.ec">
+                    </div>
+                </div>
 
-            document.getElementById('tab-login-link').classList.toggle('tab-active', !isRegister);
-            document.getElementById('tab-register-link').classList.toggle('tab-active', isRegister);
-        }
+                <div class="input-group">
+                    <label>Contraseña</label>
+                    <div class="input-icon">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="......" value="123456">
+                    </div>
+                </div>
 
-        window.onload = handleHash;
-        window.onhashchange = handleHash;
-    </script>
+                <a href="index.html" class="btn-primary full-width">Iniciar Sesión</a>
+            </div>
+
+            <!-- PANEL REGISTRO -->
+            <div id="registerPanel" class="auth-panel hidden-panel">
+                <h2>Crear cuenta</h2>
+                <p class="sub-text">Únete al Sistema de Eventos Universitarios</p>
+                
+                <div class="row-2cols">
+                    <div class="input-group">
+                        <label>Nombre</label>
+                        <div class="input-icon">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" placeholder="Ronald">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Apellido</label>
+                        <div class="input-icon">
+                            <i class="fa-solid fa-user-pen"></i>
+                            <input type="text" placeholder="Andagoya">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Correo institucional</label>
+                    <div class="input-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="tu.correo@ug.edu.ec">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Rol</label>
+                    <div class="input-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <select class="form-select-custom">
+                            <option>Estudiante</option>
+                            <option>Docente</option>
+                            <option>Administrativo</option>
+                            <option>Organizador</option>
+                        </select>
+                    </div>
+                </div>
+
+                <a href="index.html" class="btn-primary full-width">Crear Cuenta</a>
+            </div>
+
+            <div class="footer-note">
+                <p>Universidad de Guayaquil</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Solo cambio de tabs, sin almacenamiento de datos
+    const loginBtn = document.getElementById('tabLoginBtn');
+    const registerBtn = document.getElementById('tabRegisterBtn');
+    const loginPanel = document.getElementById('loginPanel');
+    const registerPanel = document.getElementById('registerPanel');
+
+    function showLogin() {
+        loginPanel.classList.remove('hidden-panel');
+        registerPanel.classList.add('hidden-panel');
+        loginBtn.classList.add('active-tab');
+        registerBtn.classList.remove('active-tab');
+    }
+
+    function showRegister() {
+        registerPanel.classList.remove('hidden-panel');
+        loginPanel.classList.add('hidden-panel');
+        registerBtn.classList.add('active-tab');
+        loginBtn.classList.remove('active-tab');
+    }
+
+    loginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        showLogin();
+    });
+
+    registerBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        showRegister();
+    });
+</script>
+
 </body>
-</html> 
+</html>
