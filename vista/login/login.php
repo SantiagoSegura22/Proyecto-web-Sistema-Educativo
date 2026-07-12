@@ -39,7 +39,7 @@
                     </p>
                 <?php endif; ?>
 
-                <form action="index.php?accion=autenticar" method="POST">
+                <form id="loginForm" action="index.php?accion=autenticar" method="POST" novalidate>
                     <div class="input-group">
                         <label for="correo">Correo institucional</label>
                         <div class="input-icon">
@@ -52,12 +52,13 @@
                         <label for="password">Contraseña</label>
                         <div class="input-icon">
                             <i class="fa-solid fa-lock"></i>
-                            <input type="password" id="password" name="password" placeholder="......" required>
+                            <input type="password" id="password" name="password" placeholder="VivaIsrael" required>
                         </div>
                     </div>
 
                     <button type="submit" class="btn-primary full-width">Iniciar Sesión</button>
                 </form>
+                <div id="loginFeedback" aria-live="polite" style="margin-top:10px;"></div>
             </div>
 
             <!-- PANEL REGISTRO -->
@@ -76,7 +77,7 @@
                     </p>
                 <?php endif; ?>
 
-                <form action="index.php?accion=registrar" method="POST">
+                <form id="registerForm" action="index.php?accion=registrar" method="POST" novalidate>
                     <div class="row-2cols">
                         <div class="input-group">
                             <label for="reg_nombre">Nombre</label>
@@ -125,6 +126,7 @@
 
                     <button type="submit" class="btn-primary full-width">Crear Cuenta</button>
                 </form>
+                <div id="registerFeedback" aria-live="polite" style="margin-top:10px;"></div>
             </div>
 
             <div class="footer-note">
@@ -158,5 +160,6 @@
     registerBtn.addEventListener('click', (e) => { e.preventDefault(); showRegister(); });
 </script>
 
+<script src="js/login.js"></script>
 </body>
 </html>
