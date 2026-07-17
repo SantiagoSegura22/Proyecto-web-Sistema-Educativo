@@ -34,7 +34,7 @@
             <i class="fa-solid fa-house"></i>
             <span>Inicio</span>
         </a>
-        <a href="eventos.html" class="nav-link">
+        <a href="index.php?accion=eventos" class="nav-link">
             <i class="fa-solid fa-calendar"></i>
             <span>Eventos</span>
         </a>
@@ -88,7 +88,7 @@
                 <p>Revisa tus eventos activos, controla tus inscripciones y mantente al día con las actividades universitarias.</p>
             </div>
             <div class="welcome-actions">
-                <a href="eventos.html" class="btn-primary">
+                <a href="index.php?accion=eventos" class="btn-primary">
                     <i class="fa-solid fa-calendar-plus"></i> Ver eventos
                 </a>
                 <a href="inscripciones.html" class="btn-outline">
