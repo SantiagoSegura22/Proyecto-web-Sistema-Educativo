@@ -2,7 +2,7 @@
 class Conexion {
     private string $host = "localhost";
     private string $database = "sistema_eventos"; 
-    private string $port = "3306";
+    private string $port = "3307";
     private string $user = "root";
     private string $password = "";
 
