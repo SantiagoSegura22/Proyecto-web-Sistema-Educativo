@@ -76,7 +76,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // FILTRADO 
+    const inputBuscarEvento = document.getElementById('inputBuscarEvento');
+    let currentCategoriaFiltro = 'Todos';
+
+    // --- FILTRADO Y BÚSQUEDA ---
+    const aplicarFiltros = () => {
+        let filtrados = todosLosEventos;
+
+        // Filtrar por categoría
+        if (currentCategoriaFiltro !== 'Todos') {
+            filtrados = filtrados.filter(ev => ev.categoria === currentCategoriaFiltro);
+        }
+
+        // Filtrar por texto de búsqueda (nombre o lugar)
+        const searchTerm = inputBuscarEvento ? inputBuscarEvento.value.toLowerCase().trim() : '';
+        if (searchTerm !== '') {
+            filtrados = filtrados.filter(ev => 
+                ev.nombre.toLowerCase().includes(searchTerm) || 
+                ev.lugar.toLowerCase().includes(searchTerm)
+            );
+        }
+
+        renderizarEventos(filtrados);
+    };
+
+    if (inputBuscarEvento) {
+        inputBuscarEvento.addEventListener('input', aplicarFiltros);
+    }
+
     filterTabs.forEach(tab => {
         tab.addEventListener('click', (e) => {
             e.preventDefault();
@@ -85,13 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
             filterTabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
 
-            const filtro = tab.getAttribute('data-filter');
-            if (filtro === 'Todos') {
-                renderizarEventos(todosLosEventos);
-            } else {
-                const filtrados = todosLosEventos.filter(ev => ev.categoria === filtro);
-                renderizarEventos(filtrados);
-            }
+            currentCategoriaFiltro = tab.getAttribute('data-filter');
+            aplicarFiltros();
         });
     });
 
