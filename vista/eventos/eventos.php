@@ -70,7 +70,7 @@
 
             <div class="search-bar">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Buscar eventos...">
+                <input type="text" id="inputBuscarEvento" placeholder="Buscar eventos...">
             </div>
 
             <div class="user-menu">
