@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- RENDERIZAR TABLA ---
+    //RENDERIZAR TABLA
     const renderizarEventos = (eventos) => {
         tablaEventosBody.innerHTML = '';
         
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // --- FILTRADO ---
+    // FILTRADO 
     filterTabs.forEach(tab => {
         tab.addEventListener('click', (e) => {
             e.preventDefault();
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- FORMULARIO MOSTRAR/OCULTAR ---
+    // FORMULARIO MOSTRAR/OCULTAR 
     btnNuevoEvento.addEventListener('click', () => {
         eventoForm.reset();
         document.getElementById('eventoId').value = '';
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         eventoForm.reset();
     });
 
-    // --- GUARDAR EVENTO (CREAR / EDITAR) ---
+    // GUARDAR EVENTO (CREAR / EDITAR) 
     eventoForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- ELIMINAR EVENTO ---
+    // ELIMINAR EVENTO 
     window.eliminarEvento = async (id) => {
         if (!confirm('¿Estás seguro de que deseas eliminar este evento?')) return;
 
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- EDITAR EVENTO (LLENAR FORMULARIO) ---
+    // EDITAR EVENTO 
     window.editarEvento = (id) => {
         const evento = todosLosEventos.find(ev => ev.id == id);
         if (!evento) return;
@@ -191,14 +191,14 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo(0, formContenedor.offsetTop);
     };
 
-    // --- UTILIDADES ---
+    // UTILIDADES 
     const mostrarFeedback = (mensaje, tipo) => {
         eventoFeedback.textContent = mensaje;
         eventoFeedback.style.display = 'block';
         if (tipo === 'exito') {
-            eventoFeedback.style.color = '#27ae60'; // Verde
+            eventoFeedback.style.color = '#27ae60'; 
         } else {
-            eventoFeedback.style.color = '#c0392b'; // Rojo
+            eventoFeedback.style.color = '#c0392b'; 
         }
 
         setTimeout(() => {
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formatearFecha = (fechaString) => {
         if (!fechaString) return '';
-        // Asume formato YYYY-MM-DD del input type=date o DB
+        // Asume formato YYYY-MM-DD 
         const partes = fechaString.split('-');
         if (partes.length === 3) {
             return `${partes[2]}/${partes[1]}/${partes[0]}`; // DD/MM/YYYY
@@ -229,6 +229,5 @@ document.addEventListener('DOMContentLoaded', () => {
         return fechaString;
     };
 
-    // Inicializar cargando eventos
     cargarEventos();
 });
