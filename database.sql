@@ -15,6 +15,22 @@ CREATE TABLE usuarios (
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE eventos(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(150) NOT NULL,
+    fecha DATE NOT NULL,
+    lugar VARCHAR(150) NOT NULL,
+    categoria VARCHAR(100) NOT NULL,
+    estado VARCHAR(50) NOT NULL,
+    descripcion TEXT
+);
+
+INSERT INTO eventos(nombre,fecha,lugar,categoria,estado,descripcion)
+VALUES
+('Feria de Emprendimiento','2026-06-12','Auditorio Principal','Academico','Activo','Evento de emprendimiento'),
+
+('Conferencia de Tecnologia','2026-06-18','Bloque B Aula 203','Tecnologia','Finalizado','Conferencia tecnologica');
+
 -- Usuario demo para probar el login.
 -- Correo: demo@ug.edu.ec
 -- Contraseña real (en texto plano, solo para que la escribas en el formulario): 123456
