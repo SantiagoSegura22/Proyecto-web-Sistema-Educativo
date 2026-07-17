@@ -101,9 +101,7 @@
                     <h2>Eventos</h2>
                     <p class="stat-label">Gestión de eventos universitarios</p>
                 </div>
-                <!-- Solo administradores/organizadores deberían poder registrar, 
-                     pero por ahora se lo mostramos según el diseño original, 
-                     o podemos filtrarlo: if ($rol === 'Organizador' || $rol === 'Docente') ... -->
+                
                 <button class="btn-primary" id="btnNuevoEvento">
                     <i class="fa-solid fa-plus"></i> Registrar Evento
                 </button>
