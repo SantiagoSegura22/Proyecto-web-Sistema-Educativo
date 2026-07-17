@@ -4,11 +4,11 @@ require_once __DIR__ . '/controlador/LoginControlador.php';
 require_once __DIR__ . '/controlador/EventoControlador.php';
 
 $accion = $_GET['accion'] ?? 'login';
+
 $loginControlador = new LoginControlador();
 $eventoControlador = new EventoControlador();
 
 switch ($accion) {
-    // RUTAS DE AUTENTICACION 
     case 'autenticar':
         $loginControlador->autenticar();
         break;
@@ -21,8 +21,6 @@ switch ($accion) {
     case 'logout':
         $loginControlador->cerrarSesion();
         break;
-
-    // RUTAS DE EVENTOS
     case 'eventos':
         $eventoControlador->mostrarVistaEventos();
         break;
@@ -38,8 +36,6 @@ switch ($accion) {
     case 'eliminarEvento':
         $eventoControlador->eliminarEvento();
         break;
-
-    // RUTAS POR DEFECTO 
     case 'login':
     default:
         $loginControlador->mostrarLogin();
