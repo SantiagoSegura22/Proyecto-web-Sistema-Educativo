@@ -8,7 +8,7 @@ $loginControlador = new LoginControlador();
 $eventoControlador = new EventoControlador();
 
 switch ($accion) {
-    // ---- RUTAS DE AUTENTICACIÓN ----
+    // RUTAS DE AUTENTICACION 
     case 'autenticar':
         $loginControlador->autenticar();
         break;
@@ -22,7 +22,7 @@ switch ($accion) {
         $loginControlador->cerrarSesion();
         break;
 
-    // ---- RUTAS DE EVENTOS ----
+    // RUTAS DE EVENTOS
     case 'eventos':
         $eventoControlador->mostrarVistaEventos();
         break;
@@ -39,7 +39,7 @@ switch ($accion) {
         $eventoControlador->eliminarEvento();
         break;
 
-    // ---- RUTAS POR DEFECTO ----
+    // RUTAS POR DEFECTO 
     case 'login':
     default:
         $loginControlador->mostrarLogin();
