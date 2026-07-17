@@ -10,7 +10,6 @@
 <body class="login-body">
 
 <div class="login-main">
-    <!-- Lado izquierdo: imagen institucional y eslogan -->
     <div class="login-hero">
         <div class="hero-content">
             <img src="img/logo-ug.png" alt="Universidad de Guayaquil" class="hero-logo">
@@ -19,27 +18,21 @@
         </div>
     </div>
 
-    <!-- Lado derecho: formulario de login -->
     <div class="login-form-container">
         <div class="form-card-panel">
-            <?php $mostrarRegistro = !empty($errorRegistro) || !empty($exitoRegistro); ?>
             <div class="tabs-wrapper">
-                <a href="#" id="tabLoginBtn" class="tab-link <?php echo $mostrarRegistro ? '' : 'active-tab'; ?>">Iniciar Sesión</a>
-                <a href="#" id="tabRegisterBtn" class="tab-link <?php echo $mostrarRegistro ? 'active-tab' : ''; ?>">Registrarse</a>
+                <a href="#" id="tabLoginBtn" class="tab-link active-tab">Iniciar Sesión</a>
+                <a href="#" id="tabRegisterBtn" class="tab-link">Registrarse</a>
             </div>
 
             <!-- PANEL LOGIN -->
-            <div id="loginPanel" class="auth-panel <?php echo $mostrarRegistro ? 'hidden-panel' : ''; ?>">
+            <div id="loginPanel" class="auth-panel">
                 <h2>Bienvenido de nuevo</h2>
                 <p class="sub-text">Ingresa tus credenciales</p>
 
-                <?php if (!empty($error)): ?>
-                    <p style="color:#c0392b; font-weight:bold; margin-bottom:15px;">
-                        <?php echo htmlspecialchars($error); ?>
-                    </p>
-                <?php endif; ?>
+                <p id="loginFeedback" style="font-weight:bold; margin-bottom:15px;"></p>
 
-                <form id="loginForm" action="index.php?accion=autenticar" method="POST" novalidate>
+                <form id="loginForm" method="POST">
                     <div class="input-group">
                         <label for="correo">Correo institucional</label>
                         <div class="input-icon">
@@ -52,32 +45,22 @@
                         <label for="password">Contraseña</label>
                         <div class="input-icon">
                             <i class="fa-solid fa-lock"></i>
-                            <input type="password" id="password" name="password" placeholder="VivaIsrael" required>
+                            <input type="password" id="password" name="password" placeholder="......" required>
                         </div>
                     </div>
 
                     <button type="submit" class="btn-primary full-width">Iniciar Sesión</button>
                 </form>
-                <div id="loginFeedback" aria-live="polite" style="margin-top:10px;"></div>
             </div>
 
             <!-- PANEL REGISTRO -->
-            <div id="registerPanel" class="auth-panel <?php echo $mostrarRegistro ? '' : 'hidden-panel'; ?>">
+            <div id="registerPanel" class="auth-panel hidden-panel">
                 <h2>Crear cuenta</h2>
                 <p class="sub-text">Únete al Sistema de Eventos Universitarios</p>
 
-                <?php if (!empty($errorRegistro)): ?>
-                    <p style="color:#c0392b; font-weight:bold; margin-bottom:15px;">
-                        <?php echo htmlspecialchars($errorRegistro); ?>
-                    </p>
-                <?php endif; ?>
-                <?php if (!empty($exitoRegistro)): ?>
-                    <p style="color:#27ae60; font-weight:bold; margin-bottom:15px;">
-                        <?php echo htmlspecialchars($exitoRegistro); ?>
-                    </p>
-                <?php endif; ?>
+                <p id="registerFeedback" style="font-weight:bold; margin-bottom:15px;"></p>
 
-                <form id="registerForm" action="index.php?accion=registrar" method="POST" novalidate>
+                <form id="registerForm" method="POST">
                     <div class="row-2cols">
                         <div class="input-group">
                             <label for="reg_nombre">Nombre</label>
@@ -126,7 +109,6 @@
 
                     <button type="submit" class="btn-primary full-width">Crear Cuenta</button>
                 </form>
-                <div id="registerFeedback" aria-live="polite" style="margin-top:10px;"></div>
             </div>
 
             <div class="footer-note">
@@ -137,9 +119,10 @@
 </div>
 
 <script>
-    const loginBtn = document.getElementById('tabLoginBtn');
-    const registerBtn = document.getElementById('tabRegisterBtn');
-    const loginPanel = document.getElementById('loginPanel');
+    /* ── Tabs ── */
+    const loginBtn      = document.getElementById('tabLoginBtn');
+    const registerBtn   = document.getElementById('tabRegisterBtn');
+    const loginPanel    = document.getElementById('loginPanel');
     const registerPanel = document.getElementById('registerPanel');
 
     function showLogin() {
@@ -156,10 +139,10 @@
         loginBtn.classList.remove('active-tab');
     }
 
-    loginBtn.addEventListener('click', (e) => { e.preventDefault(); showLogin(); });
-    registerBtn.addEventListener('click', (e) => { e.preventDefault(); showRegister(); });
+    loginBtn.addEventListener('click',    e => { e.preventDefault(); showLogin(); });
+    registerBtn.addEventListener('click', e => { e.preventDefault(); showRegister(); });
 </script>
-
 <script src="js/login.js"></script>
+
 </body>
 </html>
