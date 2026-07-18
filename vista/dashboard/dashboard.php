@@ -42,7 +42,7 @@
             <i class="fa-solid fa-ticket"></i>
             <span>Mis inscripciones</span>
         </a>
-        <a href="asistencia.html" class="nav-link">
+        <a href="index.php?accion=asistencia" class="nav-link">
             <i class="fa-solid fa-chart-bar"></i>
             <span>Asistencia</span>
         </a>

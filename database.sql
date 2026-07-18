@@ -37,3 +37,28 @@ VALUES
 -- El hash de abajo fue generado con bcrypt (equivalente a password_hash() de PHP) y sí es funcional con password_verify().
 INSERT INTO usuarios (nombre, apellido, correo, password, rol) VALUES
 ('Ronald', 'Andagoya', 'demo@ug.edu.ec', '$2b$10$WclFhGuucUkYR71kBrOO3ejabR4P7qOv8SfG51nWRUA1zgC/n7xP6', 'Estudiante');
+
+--Tabla y inserts de asistencia
+
+USE sistema_eventos;
+
+-- Tabla de asistencia
+CREATE TABLE IF NOT EXISTS asistencia (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    evento VARCHAR(150) NOT NULL,
+    fecha DATE NOT NULL,
+    hora TIME NOT NULL,
+    estado ENUM('Presente', 'Ausente', 'Tardanza') DEFAULT 'Presente',
+    observaciones TEXT DEFAULT NULL,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+-- Datos de ejemplo para probar
+INSERT INTO asistencia (usuario_id, evento, fecha, hora, estado, observaciones) VALUES
+(1, 'Hackathon UG 2025',  '2025-05-15', '08:05:00', 'Presente',  'Sin observaciones'),
+(1, 'Feria de Ciencias',  '2025-05-16', '09:30:00', 'Tardanza',  'Tráfico en vía principal'),
+(1, 'Seminario IA',       '2025-05-17', '07:50:00', 'Presente',  NULL),
+(1, 'Hackathon UG 2025',  '2025-05-18', '10:00:00', 'Ausente',   'Enfermedad'),
+(1, 'Feria de Ciencias',  '2025-05-19', '08:00:00', 'Presente',  NULL);
