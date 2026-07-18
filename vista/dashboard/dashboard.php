@@ -46,10 +46,6 @@
             <i class="fa-solid fa-chart-bar"></i>
             <span>Asistencia</span>
         </a>
-        <a href="noticias.html" class="nav-link">
-            <i class="fa-solid fa-newspaper"></i>
-            <span>Noticias</span>
-        </a>
         <div class="sidebar-divider"></div>
         <a href="index.php?accion=logout" class="nav-link">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -96,8 +92,25 @@
                 </a>
             </div>
         </section>
+
+        <section class="content-area" style="padding: 0 0 2rem 0;">
+            <div class="section-header">
+                <h2 class="section-title">Eventos recientes</h2>
+                <button class="btn-primary" id="btnRecargarNoticias">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    Actualizar
+                </button>
+            </div>
+
+            <div id="noticiasFeedback" style="margin-bottom: 16px; font-weight: 600; display: none;"></div>
+
+            <div class="news-grid" id="newsGrid">
+                <p style="grid-column: 1 / -1; text-align: center; color: #6b7280;">Cargando eventos...</p>
+            </div>
+        </section>
     </div>
 </div>
 
+<script src="js/noticias.js?v=<?= time(); ?>"></script>
 </body>
 </html>

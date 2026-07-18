@@ -49,10 +49,6 @@
             <i class="fa-solid fa-chart-bar"></i>
             <span>Asistencia</span>
         </a>
-        <a href="noticias.html" class="nav-link">
-            <i class="fa-solid fa-newspaper"></i>
-            <span>Noticias</span>
-        </a>
         <div class="sidebar-divider"></div>
         <a href="index.php?accion=logout" class="nav-link">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
