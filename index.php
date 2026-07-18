@@ -61,14 +61,12 @@ switch ($accion) {
     case 'eliminarEvento':
         $eventoControlador->eliminarEvento();
         break;
-<<<<<<< HEAD
     case 'noticias':
-        $loginControlador->mostrarDashboard();
+        $noticiasControlador->mostrarVistaNoticias();
         break;
     case 'listarNoticias':
         $noticiasControlador->listarNoticias();
         break;
-=======
 
     // ---- ASISTENCIA:
     case 'asistencia':
@@ -97,7 +95,6 @@ switch ($accion) {
         break;
 
     // ---- LOGIN por defecto ----
->>>>>>> 44350ea (The attendance module was changed to PHP.)
     case 'login':
     default:
         $loginControlador->mostrarLogin();

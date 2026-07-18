@@ -15,47 +15,8 @@
     $rol = htmlspecialchars($usuario['rol']);
 ?>
 
-<aside class="sidebar">
-    <div class="sidebar-logo">
-        <img src="img/logo-ug.png" alt="Universidad de Guayaquil">
-    </div>
-
-    <div class="sidebar-user">
-        <div class="user-avatar"><?php echo $iniciales; ?></div>
-        <div class="user-info">
-            <p class="user-name"><?php echo $nombreCompleto; ?></p>
-            <p class="user-role"><?php echo $rol; ?></p>
-        </div>
-    </div>
-
-    <nav class="sidebar-nav">
-        <a href="index.php?accion=dashboard" class="nav-link">
-            <i class="fa-solid fa-house"></i>
-            <span>Inicio</span>
-        </a>
-        <a href="index.php?accion=eventos" class="nav-link">
-            <i class="fa-solid fa-calendar"></i>
-            <span>Eventos</span>
-        </a>
-        <a href="inscripciones.html" class="nav-link">
-            <i class="fa-solid fa-ticket"></i>
-            <span>Mis inscripciones</span>
-        </a>
-        <a href="asistencia.html" class="nav-link">
-            <i class="fa-solid fa-chart-bar"></i>
-            <span>Asistencia</span>
-        </a>
-        <a href="index.php?accion=noticias" class="nav-link active">
-            <i class="fa-solid fa-newspaper"></i>
-            <span>Noticias</span>
-        </a>
-        <div class="sidebar-divider"></div>
-        <a href="index.php?accion=logout" class="nav-link">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            <span>Salir</span>
-        </a>
-    </nav>
-</aside>
+    <?php $accionActiva = 'noticias'; ?>
+    <?php include __DIR__ . '/../parciales/sidebar.php'; ?>
 
 <main class="main-content">
     <header class="page-header">

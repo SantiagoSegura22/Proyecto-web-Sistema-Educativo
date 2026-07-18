@@ -13,17 +13,25 @@ class AsistenciaControlador {
         $this->modelo = new AsistenciaModelo();
     }
 
-    // --------------------------------------------------
+   
     // Muestra la vista principal de asistencia
-    // Ruta corregida: vista/Asistencia/Asistencia.php
-    // --------------------------------------------------
-    public function mostrarVista() {
-        require_once __DIR__ . '/../vista/Asistencia/Asistencia.php';
-    }
+    
+   public function mostrarVista() {
+    // Tomamos el usuario de la sesión
+    $usuario        = $_SESSION['usuario'] ?? [];
+    $nombreCompleto = htmlspecialchars(($usuario['nombre'] ?? '') . ' ' . ($usuario['apellido'] ?? ''));
+    $iniciales      = htmlspecialchars(strtoupper(
+                        mb_substr($usuario['nombre']   ?? 'U', 0, 1) .
+                        mb_substr($usuario['apellido'] ?? '', 0, 1)
+                      ));
+    $rol            = htmlspecialchars($usuario['rol'] ?? 'Estudiante');
 
-    // --------------------------------------------------
+    require_once __DIR__ . '/../vista/Asistencia/Asistencia.php';
+}
+
+
     // AJAX: registros con filtros opcionales
-    // --------------------------------------------------
+
     public function obtenerRegistros() {
         header('Content-Type: application/json');
 
@@ -39,9 +47,9 @@ class AsistenciaControlador {
         ]);
     }
 
-    // --------------------------------------------------
+   
     // AJAX: estadísticas globales
-    // --------------------------------------------------
+   
     public function obtenerEstadisticas() {
         header('Content-Type: application/json');
 
@@ -53,9 +61,9 @@ class AsistenciaControlador {
         ]);
     }
 
-    // --------------------------------------------------
+   
     // AJAX: un registro por ID (para Ver / Editar)
-    // --------------------------------------------------
+   
     public function obtenerUno() {
         header('Content-Type: application/json');
 
@@ -76,9 +84,8 @@ class AsistenciaControlador {
         echo json_encode(['ok' => true, 'data' => $registro]);
     }
 
-    // --------------------------------------------------
     // AJAX: actualizar estado y observaciones
-    // --------------------------------------------------
+
     public function actualizar() {
         header('Content-Type: application/json');
 
@@ -100,9 +107,9 @@ class AsistenciaControlador {
         ]);
     }
 
-    // --------------------------------------------------
+
     // AJAX: lista de eventos para el filtro
-    // --------------------------------------------------
+    
     public function obtenerEventos() {
         header('Content-Type: application/json');
 
