@@ -16,7 +16,12 @@
 </head>
 
 <body>
-    <?php $accionActiva = 'asistencia'; ?>
+    <?php
+    $nombreCompleto = htmlspecialchars(($usuario['nombre'] ?? '') . ' ' . ($usuario['apellido'] ?? ''));
+    $iniciales = htmlspecialchars(strtoupper(mb_substr($usuario['nombre'] ?? 'U', 0, 1) . mb_substr($usuario['apellido'] ?? '', 0, 1)));
+    $rol = htmlspecialchars($usuario['rol'] ?? 'Estudiante');
+    $accionActiva = 'asistencia';
+    ?>
     <?php include __DIR__ . '/../parciales/sidebar.php'; ?>
 
     <!-- CONTENIDO PRINCIPAL -->
@@ -36,10 +41,10 @@
                 </button>
                 <div class="user-info">
                     <div class="user-details">
-                        <p class="user-name">Ronald Andagoya</p>
-                        <p class="user-role">Estudiante</p>
+                        <p class="user-name"><?php echo $nombreCompleto; ?></p>
+                        <p class="user-role"><?php echo $rol; ?></p>
                     </div>
-                    <div class="user-avatar">RA</div>
+                    <div class="user-avatar"><?php echo $iniciales; ?></div>
                 </div>
             </div>
 

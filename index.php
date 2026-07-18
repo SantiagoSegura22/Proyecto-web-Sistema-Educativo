@@ -11,6 +11,7 @@ require_once __DIR__ . '/controlador/NoticiasControlador.php';
 
 // ── Tu controlador ──
 require_once __DIR__ . '/controlador/AsistenciaControlador.php';
+require_once __DIR__ . '/controlador/InscripcionControlador.php';
 
 $accion = $_GET['accion'] ?? 'login';
 
@@ -21,6 +22,7 @@ $noticiasControlador = new NoticiasControlador();
 
 // ── Tu instancia ──
 $asistCtrl = new AsistenciaControlador();
+$inscripcionCtrl = new InscripcionControlador();
 
 switch ($accion) {
 
@@ -66,6 +68,39 @@ switch ($accion) {
         break;
     case 'listarNoticias':
         $noticiasControlador->listarNoticias();
+        break;
+
+    // ---- INSCRIPCIONES
+    case 'inscripciones':
+        $inscripcionCtrl->mostrarVista();
+        break;
+
+    case 'inscripciones_listar':
+        $inscripcionCtrl->listarInscripciones();
+        break;
+
+    case 'inscripciones_stats':
+        $inscripcionCtrl->obtenerEstadisticas();
+        break;
+
+    case 'inscripciones_eventos':
+        $inscripcionCtrl->obtenerEventos();
+        break;
+
+    case 'inscripciones_uno':
+        $inscripcionCtrl->obtenerUna();
+        break;
+
+    case 'inscripciones_crear':
+        $inscripcionCtrl->crearInscripcion();
+        break;
+
+    case 'inscripciones_editar':
+        $inscripcionCtrl->editarInscripcion();
+        break;
+
+    case 'inscripciones_eliminar':
+        $inscripcionCtrl->eliminarInscripcion();
         break;
 
     // ---- ASISTENCIA:

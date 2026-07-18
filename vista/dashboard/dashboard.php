@@ -38,9 +38,9 @@
             <i class="fa-solid fa-calendar"></i>
             <span>Eventos</span>
         </a>
-        <a href="inscripciones.html" class="nav-link">
+        <a href="index.php?accion=inscripciones" class="nav-link">
             <i class="fa-solid fa-ticket"></i>
-            <span>Mis inscripciones</span>
+            <span>Inscripciones</span>
         </a>
         <a href="index.php?accion=asistencia" class="nav-link">
             <i class="fa-solid fa-chart-bar"></i>
@@ -56,25 +56,7 @@
 
 <!-- CONTENIDO PRINCIPAL -->
 <div class="main-content">
-    <header class="main-header">
-        <div class="search-bar">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Buscar eventos...">
-        </div>
-        <div class="user-menu">
-            <button class="notif-btn">
-                <i class="fa-solid fa-bell"></i>
-                <span class="notif-badge">3</span>
-            </button>
-            <div class="user-info">
-                <div class="user-details">
-                    <p class="user-name"><?php echo $nombreCompleto; ?></p>
-                    <p class="user-role"><?php echo $rol; ?></p>
-                </div>
-                <div class="user-avatar"><?php echo $iniciales; ?></div>
-            </div>
-        </div>
-    </header>
+
 
     <div class="dashboard-container">
         <section class="welcome-card">
@@ -87,8 +69,8 @@
                 <a href="index.php?accion=eventos" class="btn-primary">
                     <i class="fa-solid fa-calendar-plus"></i> Ver eventos
                 </a>
-                <a href="inscripciones.html" class="btn-outline">
-                    <i class="fa-solid fa-ticket"></i> Mis inscripciones
+                <a href="index.php?accion=inscripciones" class="btn-outline">
+                    <i class="fa-solid fa-ticket"></i> Administrar inscripciones
                 </a>
             </div>
         </section>

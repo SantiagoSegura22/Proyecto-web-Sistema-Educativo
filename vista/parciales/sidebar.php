@@ -6,7 +6,7 @@
 <div class="sidebar">
 
     <div class="sidebar-logo">
-        <img src="/Proyecto-web-Sistema-Educativo/img/logo-ug.png" alt="Universidad de Guayaquil">
+        <img src="img/logo-ug.png" alt="Universidad de Guayaquil">
     </div>
 
     <div class="sidebar-user">
@@ -34,7 +34,7 @@
         <a href="index.php?accion=inscripciones"
             class="nav-link <?php echo ($accionActiva ?? '') === 'inscripciones' ? 'active' : ''; ?>">
             <i class="fa-solid fa-ticket"></i>
-            <span>Mis inscripciones</span>
+            <span>Inscripciones</span>
         </a>
 
         <a href="index.php?accion=asistencia"
