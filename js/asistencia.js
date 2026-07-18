@@ -52,14 +52,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function cargarEstadisticas() {
     try {
-        const res  = await fetch(BASE + 'asistencia_stats');
+        const res = await fetch(BASE + 'asistencia_stats');
         const data = await res.json();
+        console.debug('asistencia_stats response:', data);
 
         if (data.ok) {
             document.getElementById('stat-total').textContent     = data.data.total     ?? 0;
             document.getElementById('stat-presentes').textContent = data.data.presentes ?? 0;
             document.getElementById('stat-ausentes').textContent  = data.data.ausentes  ?? 0;
             document.getElementById('stat-tardanzas').textContent = data.data.tardanzas ?? 0;
+        } else {
+            console.warn('No se pudieron cargar las estadísticas:', data.mensaje);
         }
     } catch (err) {
         console.error('Error al cargar estadísticas:', err);
@@ -71,17 +74,22 @@ async function cargarEstadisticas() {
 
 async function cargarEventosFiltro() {
     try {
-        const res  = await fetch(BASE + 'asistencia_eventos');
+        const res = await fetch(BASE + 'asistencia_eventos');
         const data = await res.json();
+        console.debug('asistencia_eventos response:', data);
 
         if (data.ok) {
             const select = document.getElementById('filtro-evento');
+            // Limpiar opciones previas excepto la primera
+            select.querySelectorAll('option:not([value=""])').forEach(o => o.remove());
             data.eventos.forEach(ev => {
                 const opt   = document.createElement('option');
                 opt.value   = ev;
                 opt.textContent = ev;
                 select.appendChild(opt);
             });
+        } else {
+            console.warn('No se pudieron cargar los eventos:', data.mensaje);
         }
     } catch (err) {
         console.error('Error al cargar eventos:', err);
@@ -95,23 +103,30 @@ async function cargarRegistros() {
 
     const evento = document.getElementById('filtro-evento').value;
     const estado = document.getElementById('filtro-estado').value;
-    const fecha  = document.getElementById('filtro-fecha').value;
+    const fecha = document.getElementById('filtro-fecha').value;
 
     // Construimos la URL con los filtros como parámetros GET
     let url = BASE + 'asistencia_registros';
     if (evento) url += '&evento=' + encodeURIComponent(evento);
     if (estado) url += '&estado=' + encodeURIComponent(estado);
-    if (fecha)  url += '&fecha='  + encodeURIComponent(fecha);
+    if (fecha) url += '&fecha=' + encodeURIComponent(fecha);
 
     try {
-        const res  = await fetch(url);
+        const res = await fetch(url);
         const data = await res.json();
+        console.debug('asistencia_registros response:', data);
 
         if (data.ok) {
-            registrosCargados = data.registros;
-            renderizarTabla();
+            registrosCargados = Array.isArray(data.registros) ? data.registros : [];
+            try {
+                renderizarTabla();
+            } catch (err) {
+                console.error('Error al renderizar la tabla:', err);
+                mostrarError('Error al renderizar la tabla.');
+            }
         } else {
-            mostrarError('No se pudieron cargar los registros.');
+            const msg = data.mensaje || 'No se pudieron cargar los registros.';
+            mostrarError(msg);
         }
     } catch (err) {
         console.error('Error al cargar registros:', err);
@@ -124,6 +139,7 @@ async function cargarRegistros() {
 
 function renderizarTabla() {
 
+    console.debug('renderizarTabla registrosCargados:', registrosCargados);
     const busqueda = document.getElementById('buscador').value.toLowerCase();
 
     // Filtrar en cliente por lo que escribe el usuario
@@ -137,7 +153,7 @@ function renderizarTabla() {
     if (paginaActual > totalPaginas) paginaActual = totalPaginas;
 
     const inicio = (paginaActual - 1) * FILAS_POR_PAGINA;
-    const fin    = inicio + FILAS_POR_PAGINA;
+    const fin = inicio + FILAS_POR_PAGINA;
     const pagina = filtrados.slice(inicio, fin);
 
     const tbody = document.getElementById('tabla-body');
@@ -156,18 +172,18 @@ function renderizarTabla() {
     // Construir filas
     tbody.innerHTML = pagina.map((r, idx) => {
 
-        const num    = String(inicio + idx + 1).padStart(3, '0');
+        const num = String(inicio + idx + 1).padStart(3, '0');
         const nombre = escHtml(r.nombre + ' ' + r.apellido);
         const correo = escHtml(r.correo);
         const evento = escHtml(r.evento);
-        const fecha  = formatearFecha(r.fecha);
-        const hora   = r.hora.substring(0, 5); // HH:MM
-        const obs    = escHtml(r.observaciones || 'Sin observaciones');
+        const fecha = formatearFecha(r.fecha);
+        const hora = r.hora.substring(0, 5); // HH:MM
+        const obs = escHtml(r.observaciones || 'Sin observaciones');
 
         // Badge de estado
         const claseBadge = {
             'Presente': 'badge-presente',
-            'Ausente':  'badge-ausente',
+            'Ausente': 'badge-ausente',
             'Tardanza': 'badge-tardanza'
         }[r.estado] || '';
 
@@ -177,7 +193,7 @@ function renderizarTabla() {
                     data-id="${r.id}"
                     onchange="cambiarEstadoInline(this)">
                 <option value="Presente" ${r.estado === 'Presente' ? 'selected' : ''}>Presente</option>
-                <option value="Ausente"  ${r.estado === 'Ausente'  ? 'selected' : ''}>Ausente</option>
+                <option value="Ausente"  ${r.estado === 'Ausente' ? 'selected' : ''}>Ausente</option>
                 <option value="Tardanza" ${r.estado === 'Tardanza' ? 'selected' : ''}>Tardanza</option>
             </select>`;
 
@@ -247,7 +263,7 @@ function cambiarPagina(n) {
 
 async function cambiarEstadoInline(selectEl) {
 
-    const id     = selectEl.dataset.id;
+    const id = selectEl.dataset.id;
     const estado = selectEl.value;
 
     // Buscamos las observaciones actuales en el array
@@ -255,10 +271,10 @@ async function cambiarEstadoInline(selectEl) {
     const observaciones = reg ? (reg.observaciones || '') : '';
 
     try {
-        const res  = await fetch(BASE + 'asistencia_actualizar', {
-            method:  'POST',
+        const res = await fetch(BASE + 'asistencia_actualizar', {
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body:    JSON.stringify({ id, estado, observaciones })
+            body: JSON.stringify({ id, estado, observaciones })
         });
 
         const data = await res.json();
@@ -270,7 +286,7 @@ async function cambiarEstadoInline(selectEl) {
             // Actualizar la clase del badge del select
             selectEl.className = 'estado-inline ' + ({
                 'Presente': 'badge-presente',
-                'Ausente':  'badge-ausente',
+                'Ausente': 'badge-ausente',
                 'Tardanza': 'badge-tardanza'
             }[estado] || '');
 
@@ -293,17 +309,17 @@ async function cambiarEstadoInline(selectEl) {
 async function abrirVer(id) {
 
     try {
-        const res  = await fetch(BASE + 'asistencia_uno&id=' + id);
+        const res = await fetch(BASE + 'asistencia_uno&id=' + id);
         const data = await res.json();
 
         if (data.ok) {
             const r = data.data;
-            document.getElementById('ver-nombre').textContent       = r.nombre + ' ' + r.apellido;
-            document.getElementById('ver-correo').textContent       = r.correo;
-            document.getElementById('ver-evento').textContent       = r.evento;
-            document.getElementById('ver-fecha').textContent        = formatearFecha(r.fecha);
-            document.getElementById('ver-hora').textContent         = r.hora.substring(0, 5);
-            document.getElementById('ver-estado').textContent       = r.estado;
+            document.getElementById('ver-nombre').textContent = r.nombre + ' ' + r.apellido;
+            document.getElementById('ver-correo').textContent = r.correo;
+            document.getElementById('ver-evento').textContent = r.evento;
+            document.getElementById('ver-fecha').textContent = formatearFecha(r.fecha);
+            document.getElementById('ver-hora').textContent = r.hora.substring(0, 5);
+            document.getElementById('ver-estado').textContent = r.estado;
             document.getElementById('ver-observaciones').textContent = r.observaciones || 'Sin observaciones';
 
             abrirModal('modal-ver');
@@ -321,16 +337,16 @@ async function abrirVer(id) {
 async function abrirEditar(id) {
 
     try {
-        const res  = await fetch(BASE + 'asistencia_uno&id=' + id);
+        const res = await fetch(BASE + 'asistencia_uno&id=' + id);
         const data = await res.json();
 
         if (data.ok) {
             const r = data.data;
-            document.getElementById('editar-id').value            = r.id;
-            document.getElementById('editar-nombre').value        = r.nombre + ' ' + r.apellido;
-            document.getElementById('editar-correo').value        = r.correo;
-            document.getElementById('editar-evento').value        = r.evento;
-            document.getElementById('editar-estado').value        = r.estado;
+            document.getElementById('editar-id').value = r.id;
+            document.getElementById('editar-nombre').value = r.nombre + ' ' + r.apellido;
+            document.getElementById('editar-correo').value = r.correo;
+            document.getElementById('editar-evento').value = r.evento;
+            document.getElementById('editar-estado').value = r.estado;
             document.getElementById('editar-observaciones').value = r.observaciones || '';
 
             abrirModal('modal-editar');
@@ -347,15 +363,15 @@ async function abrirEditar(id) {
 
 async function guardarEdicion() {
 
-    const id            = document.getElementById('editar-id').value;
-    const estado        = document.getElementById('editar-estado').value;
+    const id = document.getElementById('editar-id').value;
+    const estado = document.getElementById('editar-estado').value;
     const observaciones = document.getElementById('editar-observaciones').value;
 
     try {
-        const res  = await fetch(BASE + 'asistencia_actualizar', {
-            method:  'POST',
+        const res = await fetch(BASE + 'asistencia_actualizar', {
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body:    JSON.stringify({ id, estado, observaciones })
+            body: JSON.stringify({ id, estado, observaciones })
         });
 
         const data = await res.json();
@@ -430,17 +446,17 @@ function mostrarToast(mensaje, tipo = 'exito') {
 
     // Estilos inline mínimos (puedes moverlos a estilos.css)
     Object.assign(toast.style, {
-        position:     'fixed',
-        bottom:       '24px',
-        right:        '24px',
-        background:   tipo === 'exito' ? '#38a169' : '#e53e3e',
-        color:        '#fff',
-        padding:      '12px 20px',
+        position: 'fixed',
+        bottom: '24px',
+        right: '24px',
+        background: tipo === 'exito' ? '#38a169' : '#e53e3e',
+        color: '#fff',
+        padding: '12px 20px',
         borderRadius: '8px',
-        fontSize:     '14px',
-        zIndex:       '9999',
-        boxShadow:    '0 4px 12px rgba(0,0,0,0.15)',
-        transition:   'opacity 0.3s'
+        fontSize: '14px',
+        zIndex: '9999',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+        transition: 'opacity 0.3s'
     });
 
     document.body.appendChild(toast);

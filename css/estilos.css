@@ -607,7 +607,8 @@ body {
 .asistencia-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 800px;
+    min-width: 0; /* permitir que la tabla se reduzca en contenedores pequeños */
+    table-layout: auto;
 }
 
 .asistencia-table th {

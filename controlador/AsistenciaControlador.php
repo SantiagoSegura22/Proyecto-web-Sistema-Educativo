@@ -35,11 +35,21 @@ class AsistenciaControlador {
     public function obtenerRegistros() {
         header('Content-Type: application/json');
 
+        if (!$this->modelo->isConnected()) {
+            echo json_encode(['ok' => false, 'mensaje' => 'Error de conexión a la base de datos']);
+            return;
+        }
+
         $evento = $_GET['evento'] ?? '';
         $estado = $_GET['estado'] ?? '';
         $fecha  = $_GET['fecha']  ?? '';
 
         $registros = $this->modelo->obtenerTodos($evento, $estado, $fecha);
+
+        if ($registros === false) {
+            echo json_encode(['ok' => false, 'mensaje' => 'Error al obtener registros']);
+            return;
+        }
 
         echo json_encode([
             'ok'        => true,
@@ -53,7 +63,17 @@ class AsistenciaControlador {
     public function obtenerEstadisticas() {
         header('Content-Type: application/json');
 
+        if (!$this->modelo->isConnected()) {
+            echo json_encode(['ok' => false, 'mensaje' => 'Error de conexión a la base de datos']);
+            return;
+        }
+
         $stats = $this->modelo->obtenerEstadisticas();
+
+        if ($stats === false) {
+            echo json_encode(['ok' => false, 'mensaje' => 'Error al obtener estadísticas']);
+            return;
+        }
 
         echo json_encode([
             'ok'   => true,
@@ -66,6 +86,11 @@ class AsistenciaControlador {
    
     public function obtenerUno() {
         header('Content-Type: application/json');
+
+        if (!$this->modelo->isConnected()) {
+            echo json_encode(['ok' => false, 'mensaje' => 'Error de conexión a la base de datos']);
+            return;
+        }
 
         $id = intval($_GET['id'] ?? 0);
 
@@ -80,14 +105,18 @@ class AsistenciaControlador {
             echo json_encode(['ok' => false, 'mensaje' => 'Registro no encontrado']);
             return;
         }
-
-        echo json_encode(['ok' => true, 'data' => $registro]);
+        echo json_encode(['ok' => true, 'data' => $registro]);
     }
 
     // AJAX: actualizar estado y observaciones
 
     public function actualizar() {
         header('Content-Type: application/json');
+
+        if (!$this->modelo->isConnected()) {
+            echo json_encode(['ok' => false, 'mensaje' => 'Error de conexión a la base de datos']);
+            return;
+        }
 
         $body          = json_decode(file_get_contents('php://input'), true);
         $id            = intval($body['id']            ?? 0);
@@ -113,7 +142,17 @@ class AsistenciaControlador {
     public function obtenerEventos() {
         header('Content-Type: application/json');
 
+        if (!$this->modelo->isConnected()) {
+            echo json_encode(['ok' => false, 'mensaje' => 'Error de conexión a la base de datos']);
+            return;
+        }
+
         $eventos = $this->modelo->obtenerEventos();
+
+        if ($eventos === false) {
+            echo json_encode(['ok' => false, 'mensaje' => 'Error al obtener eventos']);
+            return;
+        }
 
         echo json_encode(['ok' => true, 'eventos' => $eventos]);
     }

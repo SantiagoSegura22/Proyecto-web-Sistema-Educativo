@@ -19,39 +19,34 @@
 
     <nav class="sidebar-nav">
 
-        <a href="/Proyecto-web-Sistema-Educativo/index.php?accion=dashboard"
+        <a href="index.php?accion=dashboard"
             class="nav-link <?php echo ($accionActiva ?? '') === 'dashboard' ? 'active' : ''; ?>">
             <i class="fa-solid fa-house"></i>
             <span>Inicio</span>
         </a>
 
-        <a href="/Proyecto-web-Sistema-Educativo/index.php?accion=eventos"
+        <a href="index.php?accion=eventos"
             class="nav-link <?php echo ($accionActiva ?? '') === 'eventos' ? 'active' : ''; ?>">
             <i class="fa-solid fa-calendar"></i>
             <span>Eventos</span>
         </a>
 
-        <a href="/Proyecto-web-Sistema-Educativo/index.php?accion=inscripciones"
+        <a href="index.php?accion=inscripciones"
             class="nav-link <?php echo ($accionActiva ?? '') === 'inscripciones' ? 'active' : ''; ?>">
             <i class="fa-solid fa-ticket"></i>
             <span>Mis inscripciones</span>
         </a>
 
-        <a href="/Proyecto-web-Sistema-Educativo/index.php?accion=asistencia"
+        <a href="index.php?accion=asistencia"
             class="nav-link <?php echo ($accionActiva ?? '') === 'asistencia' ? 'active' : ''; ?>">
             <i class="fa-solid fa-chart-bar"></i>
             <span>Asistencia</span>
         </a>
 
-        <a href="/Proyecto-web-Sistema-Educativo/index.php?accion=noticias"
-            class="nav-link <?php echo ($accionActiva ?? '') === 'noticias' ? 'active' : ''; ?>">
-            <i class="fa-solid fa-newspaper"></i>
-            <span>Noticias</span>
-        </a>
 
         <div class="sidebar-divider"></div>
 
-        <a href="/Proyecto-web-Sistema-Educativo/index.php?accion=logout" class="nav-link">
+        <a href="index.php?accion=logout" class="nav-link">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
             <span>Salir</span>
         </a>

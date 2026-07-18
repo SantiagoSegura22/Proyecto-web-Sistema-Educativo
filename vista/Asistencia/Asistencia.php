@@ -12,7 +12,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 
-    <link rel="stylesheet" href="/Proyecto-web-Sistema-Educativo/css/estilos.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
@@ -274,7 +274,7 @@
     </div>
 
 
-  <script src="/Proyecto-web-Sistema-Educativo/js/asistencia.js"></script>
+  <script src="js/asistencia.js"></script>
 
 </body>
 </html>
